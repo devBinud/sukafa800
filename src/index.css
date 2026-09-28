@@ -1,0 +1,429 @@
+/* =========================================================
+   CHAOLUNG SUKAPHAA & AHOM KINGDOM - LIGHT ROYAL DESIGN SYSTEM
+   ========================================================= */
+
+
+:root {
+  /* 👑 Light Royal Palette */
+  /* Blueprint 60-30-10: 60% Warm Silk Cream (Sanchi Paat) */
+  --royal-dark: #FDFBF7;
+  /* Main silk cream background */
+  --royal-surface: #FFFFFF;
+  --royal-surface-card: #FFFFFF;
+  --royal-surface-elevated: #F5EFE6;
+  --royal-surface-trans: rgba(255, 255, 255, 0.94);
+
+  /* 🩸 Imperial Crimson (Muga & Silk Tones) */
+  /* 30% Primary: Royal Hengul Red */
+  --crimson-primary: #A62B2B;
+  --crimson-dark: #6E1A1A;
+  --crimson-glow: rgba(166, 43, 43, 0.15);
+  --crimson-light: #BF3A3A;
+
+  /* 🪙 Royal Gold & Amber */
+  /* 30% Primary: Muga Royalty Gold (decorative; text uses the darker gold shades) */
+  --muga-gold: #D4AF37;
+  --gold-primary: #D4AF37;
+  --gold-light: #9B700A;
+  --gold-dark: #735100;
+  --gold-glow: rgba(212, 175, 55, 0.2);
+
+  /* 10% Accent: Vibrant Crest Gold - CTAs, highlights and badges only */
+  --accent-crest: #FFC107;
+  --accent-crest-hover: #FFB300;
+  --accent-crest-ink: #2A1A00;
+  --gold-gradient: linear-gradient(135deg, #D4AF37 0%, #B8860B 50%, #8B6508 100%);
+  --crimson-gradient: linear-gradient(135deg, #B13434 0%, #8E2222 50%, #500810 100%);
+  --dark-gradient: linear-gradient(180deg, #FFFFFF 0%, #FDFBF7 100%);
+
+  /* 📜 High-Contrast Text Colors for Light Theme */
+  --text-primary: #181214;
+  /* Deep royal charcoal */
+  --text-secondary: #4A413A;
+  /* Warm readable slate */
+  --text-muted: #756D65;
+  /* Muted annotations */
+  --text-gold: #946900;
+
+  /* 🪞 Elegant Borders */
+  --border-gold: rgba(212, 175, 55, 0.32);
+  --border-gold-subtle: rgba(212, 175, 55, 0.16);
+  --border-crimson: rgba(166, 43, 43, 0.22);
+  --border-card: #EAE3D6;
+
+  /* ✨ Ultra-Modern Glassmorphic Tokens */
+  --glass-bg: rgba(255, 255, 255, 0.82);
+  --glass-bg-elevated: rgba(255, 255, 255, 0.92);
+  --glass-border: rgba(255, 255, 255, 0.95);
+  --glass-blur: blur(16px);
+  --glass-shadow: 0 12px 35px -8px rgba(60, 40, 20, 0.08), 0 0 0 1px rgba(212, 175, 55, 0.12);
+  --glow-ambient-gold: 0 20px 50px -10px rgba(212, 175, 55, 0.22);
+  --glow-ambient-crimson: 0 20px 50px -10px rgba(166, 43, 43, 0.18);
+
+  /* 🖋️ Typography Variables (from font-design.md) */
+  --font-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-heading: 'Farro', 'Inter', system-ui, -apple-system, sans-serif;
+  --font-display: 'Plus Jakarta Sans', var(--font-sans);
+  --font-serif: var(--font-heading);
+  --font-decor: var(--font-heading);
+  --font-cursive: var(--font-heading);
+
+  /* 📐 Radii & Shadows */
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 22px;
+  --radius-xl: 30px;
+  --radius-full: 9999px;
+
+  --shadow-sm: 0 2px 10px rgba(70, 50, 20, 0.04);
+  --shadow-md: 0 8px 24px rgba(70, 50, 20, 0.07);
+  --shadow-lg: 0 18px 50px rgba(70, 50, 20, 0.1);
+  --shadow-gold: 0 8px 30px rgba(212, 175, 55, 0.16);
+  --shadow-crimson: 0 8px 30px rgba(166, 43, 43, 0.14);
+
+  --transition-fast: 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-normal: 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Base Reset */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  color-scheme: light;
+  overflow-x: clip;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--royal-dark);
+  color: var(--text-primary);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: clip;
+  position: relative;
+  background-image:
+    radial-gradient(circle at 10% 5%, rgba(212, 175, 55, 0.06) 0%, transparent 40%),
+    radial-gradient(circle at 90% 50%, rgba(166, 43, 43, 0.04) 0%, transparent 45%),
+    radial-gradient(circle at 50% 95%, rgba(212, 175, 55, 0.05) 0%, transparent 50%);
+  background-attachment: fixed;
+}
+
+/* Headings (from font-design.md: Farro, line-height 1.25, font-weight 700, letter-spacing -0.02em) */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-heading);
+  color: var(--text-primary);
+  line-height: 1.25;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+p {
+  color: var(--text-secondary);
+  font-size: 1rem;
+}
+
+a {
+  color: var(--gold-light);
+  text-decoration: none;
+  transition: all var(--transition-fast);
+}
+
+a:not([class*="btn"]):hover {
+  color: var(--crimson-primary);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Selection */
+::selection {
+  background: #FEE2E2;
+  color: var(--crimson-dark);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 9px;
+}
+
+::-webkit-scrollbar-track {
+  background: #F0EAE1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #C4B399;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--gold-primary);
+}
+
+/* Utility Helpers */
+.gold-text {
+  background: var(--gold-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+  font-weight: inherit;
+}
+
+.crimson-text {
+  color: var(--crimson-primary);
+}
+
+.royal-gradient-text {
+  background: linear-gradient(135deg, #A62B2B 0%, #C49216 50%, #A62B2B 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
+.font-decor {
+  font-family: var(--font-decor);
+}
+
+.font-cursive,
+.cursive {
+  font-family: var(--font-cursive);
+}
+
+blockquote,
+cite {
+  font-family: var(--font-cursive);
+}
+
+.glass-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.4rem 1rem;
+  border-radius: var(--radius-full);
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(212, 175, 55, 0.25);
+  box-shadow: 0 4px 15px rgba(70, 50, 20, 0.05);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--text-primary);
+  transition: all var(--transition-fast);
+}
+
+.glass-pill:hover {
+  transform: translateY(-2px);
+  border-color: var(--gold-primary);
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 6px 20px rgba(212, 175, 55, 0.15);
+}
+
+.gold-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.38rem 0.95rem;
+  border-radius: var(--radius-full);
+  background: linear-gradient(135deg, #FFFDF9 0%, #FFF8E7 100%);
+  border: 1px solid rgba(212, 175, 55, 0.35);
+  color: #7A5700;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  box-shadow: 0 2px 8px rgba(212, 175, 55, 0.08);
+  transition: all var(--transition-fast);
+}
+
+.gold-badge:hover {
+  border-color: var(--gold-primary);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(212, 175, 55, 0.16);
+}
+
+.crimson-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.38rem 0.95rem;
+  border-radius: var(--radius-full);
+  background: linear-gradient(135deg, #FFF8F8 0%, #FDF0F2 100%);
+  border: 1px solid rgba(166, 43, 43, 0.28);
+  color: var(--crimson-primary);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  box-shadow: 0 2px 8px rgba(166, 43, 43, 0.06);
+  transition: all var(--transition-fast);
+}
+
+.crimson-badge:hover {
+  border-color: var(--crimson-primary);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(166, 43, 43, 0.14);
+}
+
+.royal-container {
+  width: 100%;
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* =========================================================
+   STANDARDIZED GLOBAL BUTTON SYSTEM (Filled & Outline Only)
+   ========================================================= */
+
+/* Base Button Token */
+.royal-btn,
+.btn-royal-gold,
+.btn-royal-crimson,
+.btn-crest-cta,
+.btn-modern-pill,
+.btn-royal-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  font-family: var(--font-sans);
+  font-size: 0.92rem;
+  font-weight: 700;
+  letter-spacing: 0.015em;
+  padding: 0.82rem 1.65rem;
+  border-radius: var(--radius-full);
+  line-height: 1.2;
+  text-decoration: none !important;
+  user-select: none;
+  white-space: nowrap;
+  cursor: pointer;
+  box-sizing: border-box;
+  transition: background 0.25s ease, border-color 0.25s ease, color 0.25s ease, box-shadow 0.25s ease;
+  transform: none !important;
+}
+
+/* 1. TYPE 1: FILLED (Solid Royal Background) */
+.royal-btn--filled,
+.btn-royal-gold,
+.btn-royal-crimson,
+.btn-crest-cta,
+.btn-modern-pill {
+  background: linear-gradient(135deg, #8E2222 0%, #6E1A1A 100%);
+  color: #FFFFFF !important;
+  border: 1.5px solid transparent;
+  box-shadow: 0 4px 14px rgba(142, 34, 34, 0.25);
+}
+
+.royal-btn--filled:hover,
+.btn-royal-gold:hover,
+.btn-royal-crimson:hover,
+.btn-crest-cta:hover,
+.btn-modern-pill:hover {
+  background: linear-gradient(135deg, #A82828 0%, #821E1E 100%);
+  color: #FFFFFF !important;
+  border-color: transparent;
+  box-shadow: 0 6px 20px rgba(142, 34, 34, 0.38);
+}
+
+.royal-btn--filled span,
+.btn-royal-gold span,
+.btn-royal-crimson span,
+.btn-crest-cta span,
+.btn-modern-pill span {
+  color: inherit !important;
+}
+
+/* 2. TYPE 2: OUTLINE (Crisp Bordered Background) */
+.royal-btn--outline,
+.btn-royal-outline {
+  background: transparent;
+  color: var(--crimson-primary) !important;
+  border: 1.5px solid var(--crimson-primary);
+  box-shadow: none;
+}
+
+.royal-btn--outline:hover,
+.btn-royal-outline:hover {
+  background: rgba(142, 34, 34, 0.07);
+  border-color: var(--crimson-primary);
+  color: var(--crimson-primary) !important;
+  box-shadow: 0 4px 14px rgba(142, 34, 34, 0.12);
+}
+
+.royal-btn--outline span,
+.btn-royal-outline span {
+  color: inherit !important;
+}
+
+/* Variants on Dark Backgrounds */
+.royal-btn--filled.royal-btn--on-dark,
+.btn-modern-white-pill {
+  background: #FFFFFF !important;
+  color: #181216 !important;
+  border: 1.5px solid #FFFFFF !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+}
+
+.royal-btn--filled.royal-btn--on-dark:hover,
+.btn-modern-white-pill:hover {
+  background: #FDFBF7 !important;
+  color: var(--crimson-primary) !important;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.35);
+}
+
+.royal-btn--outline.royal-btn--on-dark {
+  background: transparent !important;
+  color: #FFFFFF !important;
+  border: 1.5px solid rgba(255, 255, 255, 0.6) !important;
+}
+
+.royal-btn--outline.royal-btn--on-dark:hover {
+  background: rgba(255, 255, 255, 0.12) !important;
+  border-color: #FFFFFF !important;
+  color: #FFFFFF !important;
+}
+
+/* Sizes */
+.royal-btn--sm {
+  padding: 0.5rem 1.15rem;
+  font-size: 0.84rem;
+}
+
+.royal-btn--lg {
+  padding: 0.85rem 2rem;
+  font-size: 0.98rem;
+}
+
+.royal-btn--full {
+  width: 100%;
+}
+
+/* Arrow & Icon Helpers */
+.royal-btn__arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.25s ease;
+}
+
+.royal-btn:hover .royal-btn__arrow {
+  transform: translate(2px, -2px);
+}
