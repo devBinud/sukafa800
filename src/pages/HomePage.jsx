@@ -233,8 +233,7 @@ export default function HomePage() {
               The Valley, <span className="gold-text">Before &amp; After 1228</span>
             </h2>
             <p className="ba-desc">
-              Drag across to see how Sukaphaa's arrival turned scattered river villages into the
-              Ahom kingdom.
+              How Sukaphaa's arrival turned scattered river villages into the Ahom kingdom.
             </p>
           </div>
           <BeforeAfterSlider />

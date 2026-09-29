@@ -573,6 +573,10 @@
     margin-bottom: 1rem;
   }
 
+  .bento-hero-title {
+    font-size: 1.8rem;
+  }
+
   .bento-hero-overlay {
     background: linear-gradient(180deg, rgba(14, 8, 10, 0.55) 0%, rgba(14, 8, 10, 0.75) 100%);
   }
@@ -3767,14 +3771,12 @@
 }
 
 .ba-slider {
-  --ba-pos: 50%;
+  --ba-pos: 50%; /* fixed centre split */
   position: relative;
   aspect-ratio: 2 / 1;
   border-radius: var(--radius-xl);
   overflow: hidden;
   background: #1A0A14;
-  user-select: none;
-  touch-action: pan-y;
 }
 
 .ba-img {
@@ -3830,54 +3832,6 @@
   pointer-events: none;
 }
 
-.ba-handle {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 56px;
-  height: 56px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: #FFFFFF;
-  color: var(--crimson-primary);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
-}
-
-/* Invisible range input covering the image: drives the position */
-.ba-range {
-  position: absolute;
-  inset: 0;
-  z-index: 3;
-  width: 100%;
-  height: 100%;
-  margin: 0;
-  opacity: 0;
-  cursor: ew-resize;
-  -webkit-appearance: none;
-  appearance: none;
-}
-
-.ba-range::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  width: 56px;
-  height: 100vh;
-}
-
-.ba-range::-moz-range-thumb {
-  width: 56px;
-  height: 100vh;
-  border: none;
-}
-
-/* Keyboard focus: ring the handle */
-.ba-slider:has(.ba-range:focus-visible) .ba-handle {
-  outline: 3px solid #F5C842;
-  outline-offset: 3px;
-}
-
 @media (max-width: 768px) {
   .ba-section {
     padding: 3rem 0 0.5rem;
@@ -3904,10 +3858,6 @@
   .ba-label--before { left: 0.85rem; }
   .ba-label--after { right: 0.85rem; }
 
-  .ba-handle {
-    width: 46px;
-    height: 46px;
-  }
 }
 
 .ba-disclaimer {

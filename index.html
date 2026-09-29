@@ -24,30 +24,102 @@
 
   <!--
     Link previews (WhatsApp, Facebook, LinkedIn, X, Telegram, Slack).
-    BEFORE GOING LIVE: replace every "https://YOUR-DOMAIN" below with the real
-    site address, e.g. https://sukapha800.in. Share previews need full URLs.
+    The square crest (og-logo.jpg) makes WhatsApp show a small icon on the left;
+    X/Twitter keeps the large banner (og-image.jpg).
   -->
-  <link rel="canonical" href="https://YOUR-DOMAIN/" />
+  <link rel="canonical" href="https://sukafa800-developerbinud.vercel.app/" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Sukapha 800" />
   <meta property="og:locale" content="en_IN" />
-  <meta property="og:url" content="https://YOUR-DOMAIN/" />
+  <meta property="og:url" content="https://sukafa800-developerbinud.vercel.app/" />
   <meta property="og:title" content="Sukapha 800 | Chaolung Sukapha &amp; The Ahom Kingdom" />
   <meta property="og:description"
     content="800 years of Bor Asom (1228 – 2028): the migration across the Patkai hills, the Ahom legacy and the UNESCO Charaideo Maidams." />
-  <meta property="og:image" content="https://YOUR-DOMAIN/og-image.jpg" />
-  <meta property="og:image:secure_url" content="https://YOUR-DOMAIN/og-image.jpg" />
+  <meta property="og:image" content="https://sukafa800-developerbinud.vercel.app/og-logo.jpg" />
+  <meta property="og:image:secure_url" content="https://sukafa800-developerbinud.vercel.app/og-logo.jpg" />
   <meta property="og:image:type" content="image/jpeg" />
-  <meta property="og:image:width" content="1200" />
-  <meta property="og:image:height" content="630" />
-  <meta property="og:image:alt" content="Chaolung Sukapha overlooking the Brahmaputra valley with his followers" />
+  <meta property="og:image:width" content="400" />
+  <meta property="og:image:height" content="400" />
+  <meta property="og:image:alt" content="Sukapha 800 crest" />
 
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Sukapha 800 | Chaolung Sukapha &amp; The Ahom Kingdom" />
   <meta name="twitter:description"
     content="800 years of Bor Asom (1228 – 2028): the migration across the Patkai hills, the Ahom legacy and the UNESCO Charaideo Maidams." />
-  <meta name="twitter:image" content="https://YOUR-DOMAIN/og-image.jpg" />
+  <meta name="twitter:image" content="https://sukafa800-developerbinud.vercel.app/og-image.jpg" />
   <meta name="twitter:image:alt" content="Chaolung Sukapha overlooking the Brahmaputra valley with his followers" />
+
+  <!-- Page loader: inline so it shows before the app's CSS/JS arrive -->
+  <style>
+    #page-loader {
+      position: fixed;
+      inset: 0;
+      z-index: 3000;
+      display: grid;
+      place-items: center;
+      background: #FBF6EE;
+      transition: opacity 0.4s ease, visibility 0.4s ease;
+    }
+    #page-loader.is-hidden {
+      opacity: 0;
+      visibility: hidden;
+    }
+    /* Hourglass loader: crimson frame, gold sand */
+    .hourglass-loader {
+      --c1: #A62B2B;
+      --c2: #F5C842;
+      width: 40px;
+      height: 80px;
+      border-top: 4px solid var(--c1);
+      border-bottom: 4px solid var(--c1);
+      background: linear-gradient(90deg, var(--c1) 2px, var(--c2) 0 5px, var(--c1) 0) 50%/7px 8px no-repeat;
+      display: grid;
+      overflow: hidden;
+      animation: hourglass-flip 2s infinite linear;
+    }
+    .hourglass-loader::before,
+    .hourglass-loader::after {
+      content: "";
+      grid-area: 1/1;
+      width: 75%;
+      height: calc(50% - 4px);
+      margin: 0 auto;
+      border: 2px solid var(--c1);
+      border-top: 0;
+      box-sizing: content-box;
+      border-radius: 0 0 40% 40%;
+      -webkit-mask:
+        linear-gradient(#000 0 0) bottom/4px 2px no-repeat,
+        linear-gradient(#000 0 0);
+      -webkit-mask-composite: destination-out;
+              mask-composite: exclude;
+      background:
+        linear-gradient(var(--d, 0deg), var(--c2) 50%, #0000 0) bottom /100% 205%,
+        linear-gradient(var(--c2) 0 0) center/0 100%;
+      background-repeat: no-repeat;
+      animation: inherit;
+      animation-name: hourglass-sand;
+    }
+    .hourglass-loader::after {
+      transform-origin: 50% calc(100% + 2px);
+      transform: scaleY(-1);
+      --s: 3px;
+      --d: 180deg;
+    }
+    @keyframes hourglass-flip {
+      80%  { transform: rotate(0); }
+      100% { transform: rotate(0.5turn); }
+    }
+    @keyframes hourglass-sand {
+      10%, 70% { background-size: 100% 205%, var(--s, 0) 100%; }
+      70%, 100% { background-position: top, center; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .hourglass-loader,
+      .hourglass-loader::before,
+      .hourglass-loader::after { animation: none; }
+    }
+  </style>
 
   <!-- Google Fonts: Plus Jakarta Sans (Headings), Manrope (Body & UI) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -58,8 +130,48 @@
 </head>
 
 <body>
+  <div id="page-loader" role="status" aria-label="Loading">
+    <div class="hourglass-loader"></div>
+  </div>
+
   <div id="root"></div>
   <script type="module" src="/src/main.jsx"></script>
+
+  <!-- Fade the loader out at the end of a full hourglass cycle (sand drains +
+       flip), once the page has loaded. Always shows at least one full spin;
+       never stays longer than 8s on a slow connection. -->
+  <script>
+    (function () {
+      var loader = document.getElementById('page-loader');
+      var glass = loader.querySelector('.hourglass-loader');
+      var loaded = document.readyState === 'complete';
+      var done = false;
+
+      function hide() {
+        if (done) return;
+        done = true;
+        loader.classList.add('is-hidden');
+        setTimeout(function () { loader.remove(); }, 500);
+      }
+
+      // Fires each time a flip completes (the pseudo-element sand animations are ignored)
+      glass.addEventListener('animationiteration', function (e) {
+        if (e.animationName !== 'hourglass-flip' || e.pseudoElement) return;
+        if (loaded) hide();
+      });
+
+      // Loaded mid-cycle: wait for the current flip to finish before closing
+      window.addEventListener('load', function () { loaded = true; });
+
+      // Reduced motion: no animation runs, so just close when the page is ready
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        if (loaded) hide();
+        else window.addEventListener('load', hide);
+      }
+
+      setTimeout(hide, 8000);
+    })();
+  </script>
 </body>
 
 </html>
