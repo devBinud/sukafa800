@@ -201,7 +201,7 @@ export default function LegacyPage() {
         {/* Bottom CTA */}
         <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
           <Button to="/tribute" variant="filled" arrow size="lg">
-            Leave a Tribute on the Community Wall
+            Leave a Tribute
           </Button>
         </div>
       </div>

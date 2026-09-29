@@ -86,7 +86,7 @@ export default function DynastyPage() {
         {/* Footer Navigation */}
         <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
           <Button to="/vault" variant="filled" arrow size="lg">
-            Explore Royal Palaces &amp; UNESCO Maidams
+            Explore Royal Palaces
           </Button>
         </div>
       </div>

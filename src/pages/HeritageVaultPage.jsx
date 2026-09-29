@@ -125,7 +125,7 @@ export default function HeritageVaultPage() {
         {/* Bottom CTA */}
         <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
           <Button to="/legacy" variant="filled" icon={<Shield size={18} />}>
-            Discover Ahom Culture, Buranjis &amp; Paik System
+            Discover Ahom Culture
           </Button>
         </div>
       </div>
