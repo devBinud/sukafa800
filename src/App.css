@@ -81,9 +81,8 @@
   right: 0;
   width: 100%;
   z-index: 1000;
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  background: rgba(255, 255, 255, 0.92);
+  /* Solid-ish white instead of a backdrop blur: blur on a sticky bar repaints every scroll frame */
+  background: rgba(255, 255, 255, 0.97);
   border-bottom: 1px solid rgba(212, 175, 55, 0.16);
   transition: background 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
 }

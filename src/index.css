@@ -95,7 +95,7 @@
 }
 
 html {
-  scroll-behavior: smooth;
+  /* No CSS smooth scrolling: Lenis handles it (the two conflict) */
   color-scheme: light;
   overflow-x: clip;
 }
@@ -113,7 +113,6 @@ body {
     radial-gradient(circle at 10% 5%, rgba(212, 175, 55, 0.06) 0%, transparent 40%),
     radial-gradient(circle at 90% 50%, rgba(166, 43, 43, 0.04) 0%, transparent 45%),
     radial-gradient(circle at 50% 95%, rgba(212, 175, 55, 0.05) 0%, transparent 50%);
-  background-attachment: fixed;
 }
 
 /* Headings: Plus Jakarta Sans, line-height 1.25, font-weight 700, letter-spacing -0.02em */

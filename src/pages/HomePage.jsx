@@ -2,9 +2,9 @@ import { useState, useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import {
   Crown, Award,
-  ArrowLeft, ArrowRight, ArrowUpRight,
+  ArrowLeft, ArrowRight,
   CheckCircle2, XCircle, RotateCcw,
-  Heart, Info,
+  Info,
   HeartHandshake,
   Compass, Mountain, Flag, MapPin, Landmark, Sprout
 } from 'lucide-react'
@@ -13,7 +13,6 @@ import {
 } from '../data/ahomData'
 import Button from '../components/common/Button'
 import unescoBannerImg from '../images/unesco_banner.png'
-import charaideoMoidamImg from '../images/soraideu_moidam.jpeg'
 import HeritageTourismSection from '../components/HeritageTourismSection'
 import BeforeAfterSlider from '../components/BeforeAfterSlider'
 import CentenaryCTA from '../components/CentenaryCTA'
@@ -223,54 +222,6 @@ export default function HomePage() {
         </div>
       </section>
 
-
-      {/* =========================================================
-          3. MORE THAN A DYNASTY: LIVING HERITAGE (Matching Reference Image Block 4)
-          ========================================================= */}
-      <section className="bento-triple-section">
-        <div className="royal-container">
-          <div className="triple-head">
-            <h2 className="triple-title">
-              More Than A Dynasty: The Living Soul of Bor Asom
-            </h2>
-          </div>
-
-          <div className="triple-cards-grid">
-            {/* Card 1 */}
-            <div className="triple-card">
-              <img src={charaideoMoidamImg} alt="UNESCO Charaideo Maidams" className="triple-card-bg-img" />
-              <div className="triple-card-overlay" />
-              <Link to="/vault" className="triple-card-arrow-btn" aria-label="Explore Charaideo">
-                <ArrowUpRight size={18} />
-              </Link>
-              <div className="triple-card-content">
-                <h3 className="triple-card-title">UNESCO Charaideo Maidams</h3>              </div>
-            </div>
-
-            {/* Card 2 */}
-            <div className="triple-card">
-              <img src="/images/ahom-buranji.jpg" alt="The Buranjis and Statecraft" className="triple-card-bg-img" />
-              <div className="triple-card-overlay" />
-              <Link to="/legacy" className="triple-card-arrow-btn" aria-label="Explore Buranjis">
-                <ArrowUpRight size={18} />
-              </Link>
-              <div className="triple-card-content">
-                <h3 className="triple-card-title">The Buranjis &amp; Statecraft</h3>              </div>
-            </div>
-
-            {/* Card 3 */}
-            <div className="triple-card">
-              <img src={rangGharImg} alt="Rang Ghar, Sivasagar" className="triple-card-bg-img" />
-              <div className="triple-card-overlay" />
-              <Link to="/legacy" className="triple-card-arrow-btn" aria-label="Explore Traditions">
-                <ArrowUpRight size={18} />
-              </Link>
-              <div className="triple-card-content">
-                <h3 className="triple-card-title">Living Traditions &amp; Culture</h3>              </div>
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* =========================================================
           BEFORE / AFTER 1228 COMPARISON

@@ -15,7 +15,15 @@ export const prefersReducedMotion = () =>
 export function initSmoothScroll() {
   if (lenis || prefersReducedMotion()) return lenis
 
-  lenis = new Lenis({ lerp: 0.1, smoothWheel: true })
+  // Time-based easing (exponential ease-out over 1.2s) gives the soft, weighted
+  // glide used on most modern sites. Touch devices keep native momentum scrolling.
+  lenis = new Lenis({
+    duration: 1.2,
+    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+    smoothWheel: true,
+    wheelMultiplier: 1,
+    touchMultiplier: 1.5,
+  })
   lenis.on('scroll', ScrollTrigger.update)
 
   const raf = (time) => lenis.raf(time * 1000)

@@ -1,0 +1,14 @@
+{
+  "name": "Sukapha 800",
+  "short_name": "Sukapha 800",
+  "description": "Celebrating 800 years of Chaolung Sukapha and the Ahom Kingdom of Assam (1228 – 2028).",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#FBF6EE",
+  "theme_color": "#A62B2B",
+  "icons": [
+    { "src": "/logo192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "/logo512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" }
+  ]
+}

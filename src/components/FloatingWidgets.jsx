@@ -7,7 +7,10 @@ export default function FloatingWidgets() {
   const [showScrollTop, setShowScrollTop] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
+    // Measure at most once per animation frame so smooth scrolling stays fluid
+    let frame = 0;
+    const update = () => {
+      frame = 0;
       const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
       if (totalHeight > 0) {
         const currentProgress = (window.scrollY / totalHeight) * 100;
@@ -15,10 +18,14 @@ export default function FloatingWidgets() {
         setShowScrollTop(window.scrollY > 200);
       }
     };
+    const handleScroll = () => { if (!frame) frame = requestAnimationFrame(update); };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
-    handleScroll();
-    return () => window.removeEventListener('scroll', handleScroll);
+    update();
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      if (frame) cancelAnimationFrame(frame);
+    };
   }, []);
 
   const scrollToTop = () => {
