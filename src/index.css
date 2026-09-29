@@ -61,8 +61,8 @@
   --glow-ambient-crimson: 0 20px 50px -10px rgba(166, 43, 43, 0.18);
 
   /* 🖋️ Typography Variables (from font-design.md) */
-  --font-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --font-heading: 'Farro', 'Inter', system-ui, -apple-system, sans-serif;
+  --font-sans: 'Manrope', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-heading: 'Plus Jakarta Sans', 'Manrope', system-ui, -apple-system, sans-serif;
   --font-display: 'Plus Jakarta Sans', var(--font-sans);
   --font-serif: var(--font-heading);
   --font-decor: var(--font-heading);
@@ -116,7 +116,7 @@ body {
   background-attachment: fixed;
 }
 
-/* Headings (from font-design.md: Farro, line-height 1.25, font-weight 700, letter-spacing -0.02em) */
+/* Headings: Plus Jakarta Sans, line-height 1.25, font-weight 700, letter-spacing -0.02em */
 h1,
 h2,
 h3,
@@ -243,7 +243,6 @@ cite {
   padding: 0.38rem 0.95rem;
   border-radius: var(--radius-full);
   background: linear-gradient(135deg, #FFFDF9 0%, #FFF8E7 100%);
-  border: 1px solid rgba(212, 175, 55, 0.35);
   color: #7A5700;
   font-size: 0.78rem;
   font-weight: 700;
@@ -255,8 +254,6 @@ cite {
 
 .gold-badge:hover {
   border-color: var(--gold-primary);
-  transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(212, 175, 55, 0.16);
 }
 
 .crimson-badge {

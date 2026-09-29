@@ -2,18 +2,43 @@ import { useState, useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import {
   Crown, Award,
-  ArrowRight, ArrowUpRight, BookOpen,
+  ArrowLeft, ArrowRight, ArrowUpRight,
   CheckCircle2, XCircle, RotateCcw,
-  Heart,
-  HeartHandshake, ShieldCheck,
+  Heart, Info,
+  HeartHandshake,
   Compass, Mountain, Flag, MapPin, Landmark, Sprout
 } from 'lucide-react'
 import {
   AHOM_QUIZ
 } from '../data/ahomData'
 import Button from '../components/common/Button'
-import ranggharImg from '../images/rangghar.png'
+import unescoBannerImg from '../images/unesco_banner.png'
+import charaideoMoidamImg from '../images/soraideu_moidam.jpeg'
 import HeritageTourismSection from '../components/HeritageTourismSection'
+import BeforeAfterSlider from '../components/BeforeAfterSlider'
+import CentenaryCTA from '../components/CentenaryCTA'
+import ahomMapImg from '../images/ahom_map.jpg'
+import rangGharImg from '../images/visionary_statecraft/rang_ghar.jpg'
+import talatalGharImg from '../images/visionary_statecraft/talatal_ghar.jpeg'
+import karengGharImg from '../images/visionary_statecraft/kareng_ghar.jpeg'
+import golaGharImg from '../images/visionary_statecraft/gola_ghor.jpeg'
+import joysagarTankImg from '../images/visionary_statecraft/joysagar_tank.jpeg'
+import deviGharImg from '../images/visionary_statecraft/Devighar_Jaysagar.jpg'
+import ranganathDolImg from '../images/visionary_statecraft/Ronganath_Doul.jpg'
+import haraGauriDolImg from '../images/visionary_statecraft/Hara_Gauri_Doul.jpg'
+import baidyanathShivaDolImg from '../images/visionary_statecraft/Badyanath_Shivadol.jpg'
+
+const AHOM_HERITAGE_SITES = [
+  { name: 'Rang Ghar', place: 'Sivasagar · Royal Amphitheatre', image: rangGharImg },
+  { name: 'Talatal Ghar', place: 'Sivasagar · Royal Palace', image: talatalGharImg },
+  { name: 'Kareng Ghar', place: 'Garhgaon · Royal Palace', image: karengGharImg },
+  { name: 'Gola Ghar', place: 'Garhgaon · Royal Armoury', image: golaGharImg },
+  { name: 'Joysagar Tank', place: 'Rangpur · Largest Ahom Tank', image: joysagarTankImg },
+  { name: 'Devi Ghar', place: 'Joysagar · Ahom Temple', image: deviGharImg },
+  { name: 'Ranganath Dol', place: 'Joysagar · Ahom Temple', image: ranganathDolImg },
+  { name: 'Hara Gauri Dol', place: 'Sivasagar · Ahom Temple', image: haraGauriDolImg },
+  { name: 'Baidyanath Shiva Dol', place: 'Sivasagar · Ahom Temple', image: baidyanathShivaDolImg },
+];
 
 const AHOM_MILESTONES = [
   {
@@ -133,30 +158,31 @@ export default function HomePage() {
     setQuizFinished(false);
   };
 
-  // Active milestone tracking on scroll
-  const rowRefs = useRef([]);
-  const [activeMilestones, setActiveMilestones] = useState(new Set([0]));
+  // Milestone journey carousel: arrows scroll by one card
+  const journeyRef = useRef(null);
+  const [journeyEdge, setJourneyEdge] = useState({ start: true, end: false });
+
+  const updateJourneyEdge = () => {
+    const el = journeyRef.current;
+    if (!el) return;
+    setJourneyEdge({
+      start: el.scrollLeft <= 4,
+      end: el.scrollLeft + el.clientWidth >= el.scrollWidth - 4,
+    });
+  };
+
+  const scrollJourney = (dir) => {
+    const el = journeyRef.current;
+    if (!el) return;
+    const card = el.querySelector('.journey-item');
+    const step = card ? card.getBoundingClientRect().width + 24 : el.clientWidth;
+    el.scrollBy({ left: dir * step, behavior: 'smooth' });
+  };
 
   useEffect(() => {
-    const handleMilestoneScroll = () => {
-      const triggerY = window.innerHeight * 0.55;
-      const activeSet = new Set([0]);
-      rowRefs.current.forEach((el, idx) => {
-        if (!el) return;
-        const rowRect = el.getBoundingClientRect();
-        if (rowRect.top <= triggerY) {
-          activeSet.add(idx);
-        }
-      });
-      setActiveMilestones(activeSet);
-    };
-
-    window.addEventListener('scroll', handleMilestoneScroll, { passive: true });
-    handleMilestoneScroll();
-
-    return () => {
-      window.removeEventListener('scroll', handleMilestoneScroll);
-    };
+    updateJourneyEdge();
+    window.addEventListener('resize', updateJourneyEdge);
+    return () => window.removeEventListener('resize', updateJourneyEdge);
   }, []);
 
   return (
@@ -174,161 +200,29 @@ export default function HomePage() {
         <div className="bento-hero-overlay" />
 
         <div className="royal-container bento-hero-inner">
-          <div className="bento-hero-bottom">
-            {/* Left: Big Typography */}
-            <div className="bento-hero-headline-wrap">
-              <span className="bento-hero-location">
-                PATKAI PASS TO CHARAIDEO • EIGHT CENTURIES OF BOR ASOM
-              </span>
-              <h1 className="bento-hero-title">
-                CHAOLUNG SUKAPHAA <br />
-                <span>&amp; The Ahom Kingdom</span>
-              </h1>
-            </div>
-
-            {/* Right: Lead & White Pill Button */}
-            <div className="bento-hero-cta-wrap">
-              <p className="bento-hero-lead">
-                In 1228 CE, the visionary Tai prince united the diverse peoples of the Brahmaputra valley into an indomitable commonwealth of freedom and brotherhood.
-              </p>
-              <Button to="/migration" variant="filled" onDark arrow size="lg">
+          <div className="bento-hero-content">
+            <h1 className="bento-hero-title">
+              Honouring Sukaphaa.<br />
+              Uniting Bor Asom.<br />
+              Celebrating <span className="bento-hero-accent">798 Years</span><br />
+              of Ahom Heritage.
+            </h1>
+            <p className="bento-hero-lead">
+              In 1228 CE, the visionary Tai prince united the diverse peoples of the Brahmaputra valley
+              into an indomitable commonwealth of freedom and brotherhood.
+            </p>
+            <div className="bento-hero-actions">
+              <Button to="/migration" variant="filled" arrow size="lg">
                 Explore Sukaphaa's Saga
+              </Button>
+              <Button to="/tribute" variant="outline" onDark size="lg">
+                Pay Tribute
               </Button>
             </div>
           </div>
         </div>
       </section>
 
-      {/* =========================================================
-          2. THE GENESIS & VISION (Inline Badges & Avatars - Reference Design)
-          ========================================================= */}
-      <section className="manifesto-interactive-section">
-        <div className="royal-container">
-          <div className="manifesto-interactive-wrap">
-            <h2 className="manifesto-flow-title">
-              <span className="manifesto-primary-text">
-                We forge an indomitable commonwealth with our brotherly clans and visionary leaders.{' '}
-              </span>
-              <span className="manifesto-muted-text">
-                And unite eight centuries of heritage into the timeless spirit of Bor Asom.
-              </span>
-            </h2>
-          </div>
-        </div>
-      </section>
-
-      {/* =========================================================
-          MODERN ROYAL CHRONICLE MILESTONES SECTION
-          ========================================================= */}
-      <section className="modern-milestones-section">
-        <div className="royal-container">
-          <div className="milestones-head">
-            <span className="milestones-kicker">
-              Chronology of Bor Asom
-            </span>
-            <h2 className="milestones-title">
-              Foundational Milestones of the <span className="gold-text">Ahom Genesis</span>
-            </h2>
-            <p className="milestones-subtitle">
-              Trace Chaolung Sukaphaa's transformative 53-year odyssey from the peaks of Patkai to the sacred capital of Charaideo.
-            </p>
-          </div>
-
-          <div className="chronicle-stream">
-            {AHOM_MILESTONES.map((m, idx) => {
-              const IconComp = m.icon;
-              const isActive = activeMilestones.has(idx);
-
-              return (
-                <div
-                  key={idx}
-                  ref={el => rowRefs.current[idx] = el}
-                  className={`chronicle-row ${isActive ? 'is-active' : ''}`}
-                >
-                  {/* Left Column: Continuous Timeline Node */}
-                  <div className="chronicle-spine-col">
-                    <div className="chronicle-emblem-node">
-                      {IconComp ? (
-                        <IconComp size={18} className="node-icon" />
-                      ) : (
-                        <span className="node-dot" />
-                      )}
-                    </div>
-                  </div>
-
-                  {/* Right Column: Unified Story Card */}
-                  <div className="chronicle-story-card">
-                    <div className="chronicle-card-meta">
-                      <span className="chronicle-year-text">{m.year}</span>
-                      <span className="chronicle-location-text">{m.location}</span>
-                    </div>
-
-                    <h3 className="chronicle-card-title">{m.title}</h3>
-                    <p className="chronicle-card-desc">{m.desc}</p>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* =========================================================
-          THEMED THREE-PILLARS SECTION (Ahom Foundation & Statecraft)
-          ========================================================= */}
-      <section className="themed-pillars-section">
-        <div className="royal-container">
-          <div className="themed-pillars-header">
-            <h2 className="themed-pillars-title">
-              Visionary statecraft that built an <span className="gold-text">enduring empire</span>.
-            </h2>
-            <p className="themed-pillars-desc">
-              Chaolung Sukaphaa established Bor Asom through mutual respect, egalitarian assimilation, and civic discipline. By honoring indigenous clans while introducing advanced agriculture and structured governance, the Ahom kingdom flourished as an unbroken six-century commonwealth.
-            </p>
-          </div>
-
-          <div className="themed-pillars-grid">
-            {/* Pillar 1 */}
-            <div className="themed-pillar-card">
-              <div className="pillar-header-row">
-                <div className="pillar-icon-badge">
-                  <HeartHandshake size={24} />
-                </div>
-              </div>
-              <h3 className="pillar-card-title">Inclusive Assimilation</h3>
-              <p className="pillar-card-desc">
-                Sukaphaa unified diverse indigenous clans through mutual respect and intermarriage — forging Bor Asom without subjugation or cultural erasure.
-              </p>
-            </div>
-
-            {/* Pillar 2 */}
-            <div className="themed-pillar-card">
-              <div className="pillar-header-row">
-                <div className="pillar-icon-badge">
-                  <ShieldCheck size={24} />
-                </div>
-              </div>
-              <h3 className="pillar-card-title">Unbroken Sovereignty</h3>
-              <p className="pillar-card-desc">
-                Defended the Brahmaputra Valley against 17 imperial Mughal invasions through mastery of river terrain, mud ramparts (Gors), and decisive naval tactics.
-              </p>
-            </div>
-
-            {/* Pillar 3 */}
-            <div className="themed-pillar-card">
-              <div className="pillar-header-row">
-                <div className="pillar-icon-badge">
-                  <BookOpen size={24} />
-                </div>
-              </div>
-              <h3 className="pillar-card-title">Living Buranjis</h3>
-              <p className="pillar-card-desc">
-                Instituted secular factual historiography across six unbroken centuries, chronicling wars, eclipses, and royal edicts on cured Sanchi bark manuscripts.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* =========================================================
           3. MORE THAN A DYNASTY: LIVING HERITAGE (Matching Reference Image Block 4)
@@ -344,17 +238,13 @@ export default function HomePage() {
           <div className="triple-cards-grid">
             {/* Card 1 */}
             <div className="triple-card">
-              <img src="/images/charaideo-maidams.jpg" alt="UNESCO Charaideo Maidams" className="triple-card-bg-img" />
+              <img src={charaideoMoidamImg} alt="UNESCO Charaideo Maidams" className="triple-card-bg-img" />
               <div className="triple-card-overlay" />
               <Link to="/vault" className="triple-card-arrow-btn" aria-label="Explore Charaideo">
                 <ArrowUpRight size={18} />
               </Link>
               <div className="triple-card-content">
-                <h3 className="triple-card-title">UNESCO Charaideo Maidams</h3>
-                <p className="triple-card-desc">
-                  The sacred earthen pyramid barrows of Tai-Ahom Swargadeos, inscribed as India's 43rd UNESCO World Heritage site.
-                </p>
-              </div>
+                <h3 className="triple-card-title">UNESCO Charaideo Maidams</h3>              </div>
             </div>
 
             {/* Card 2 */}
@@ -365,27 +255,184 @@ export default function HomePage() {
                 <ArrowUpRight size={18} />
               </Link>
               <div className="triple-card-content">
-                <h3 className="triple-card-title">The Buranjis &amp; Statecraft</h3>
-                <p className="triple-card-desc">
-                  A pioneering system of written state chronicles, organic bio-mortar masonry, and disciplined citizen army mobilisation.
-                </p>
-              </div>
+                <h3 className="triple-card-title">The Buranjis &amp; Statecraft</h3>              </div>
             </div>
 
             {/* Card 3 */}
             <div className="triple-card">
-              <img src="/images/ahom-monuments.jpg" alt="Living Traditions and Culture" className="triple-card-bg-img" />
+              <img src={rangGharImg} alt="Rang Ghar, Sivasagar" className="triple-card-bg-img" />
               <div className="triple-card-overlay" />
               <Link to="/legacy" className="triple-card-arrow-btn" aria-label="Explore Traditions">
                 <ArrowUpRight size={18} />
               </Link>
               <div className="triple-card-content">
-                <h3 className="triple-card-title">Living Traditions &amp; Culture</h3>
-                <p className="triple-card-desc">
-                  Me-Dam-Me-Phi ancestor veneration, golden Muga silk weaving, and the enduring commonwealth spirit of Bor Asom.
-                </p>
-              </div>
+                <h3 className="triple-card-title">Living Traditions &amp; Culture</h3>              </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* =========================================================
+          BEFORE / AFTER 1228 COMPARISON
+          ========================================================= */}
+      <section className="ba-section">
+        <div className="royal-container">
+          <div className="ba-head">
+            <h2 className="ba-title">
+              The Valley, <span className="gold-text">Before &amp; After 1228</span>
+            </h2>
+            <p className="ba-desc">
+              Drag across to see how Sukaphaa's arrival turned scattered river villages into the
+              Ahom kingdom.
+            </p>
+          </div>
+          <BeforeAfterSlider />
+          <p className="ba-disclaimer">
+            <Info size={15} aria-hidden="true" />
+            <span>
+              <strong>Disclaimer:</strong> These are AI-generated artistic impressions of the valley,
+              not historical photographs.
+            </span>
+          </p>
+        </div>
+      </section>
+
+      {/* =========================================================
+          MODERN ROYAL CHRONICLE MILESTONES SECTION
+          ========================================================= */}
+      <section className="modern-milestones-section">
+        <div className="royal-container">
+          <div className="journey-head">
+            <div>
+              <h2 className="milestones-title">
+                Foundational Milestones of the <span className="gold-text">Ahom Genesis</span>
+              </h2>
+              <p className="milestones-subtitle">
+                Trace Chaolung Sukaphaa's transformative 53-year odyssey from the peaks of Patkai to the sacred capital of Charaideo.
+              </p>
+            </div>
+            <div className="journey-controls">
+              <button
+                type="button"
+                className="journey-arrow"
+                onClick={() => scrollJourney(-1)}
+                disabled={journeyEdge.start}
+                aria-label="Previous milestones"
+              >
+                <ArrowLeft size={20} />
+              </button>
+              <button
+                type="button"
+                className="journey-arrow"
+                onClick={() => scrollJourney(1)}
+                disabled={journeyEdge.end}
+                aria-label="Next milestones"
+              >
+                <ArrowRight size={20} />
+              </button>
+            </div>
+          </div>
+
+          {/* Horizontal journey: connector line runs through the step nodes */}
+          <ol className="journey-track" ref={journeyRef} onScroll={updateJourneyEdge}>
+            {AHOM_MILESTONES.map((m) => {
+              const IconComp = m.icon;
+              return (
+                <li key={m.year} className="journey-item">
+                  <div className="journey-node">
+                    <span className="journey-node-dot">
+                      <IconComp size={18} />
+                    </span>
+                  </div>
+                  <article className="journey-card">
+                    <span className="journey-year">{m.year}</span>
+                    <h3 className="journey-title">{m.title}</h3>
+                    <p className="journey-location">
+                      <MapPin size={14} /> {m.location}
+                    </p>
+                    <p className="journey-desc">{m.desc}</p>
+                  </article>
+                </li>
+              );
+            })}
+          </ol>
+
+          <div className="journey-footer">
+            <Button to="/migration" variant="filled" arrow>
+              Explore the Full Journey
+            </Button>
+          </div>
+        </div>
+      </section>
+
+      {/* =========================================================
+          AHOM KINGDOM MAP
+          ========================================================= */}
+      <section className="kingdom-map-section">
+        <div className="royal-container kingdom-map-layout">
+          <div className="kingdom-map-text">
+            <h2 className="kingdom-map-title">
+              The Reach of the <span className="gold-text">Ahom Kingdom</span>
+            </h2>
+            <p className="kingdom-map-desc">
+              From a small band of pioneers at Charaideo, the kingdom grew to span the Brahmaputra
+              valley and held it for six centuries.
+            </p>
+
+            <dl className="kingdom-map-facts">
+              <div>
+                <dt>1228 – 1826</dt>
+                <dd>Nearly six centuries of rule</dd>
+              </div>
+              <div>
+                <dt>Charaideo · Garhgaon · Rangpur · Jorhat</dt>
+                <dd>Successive royal capitals</dd>
+              </div>
+              <div>
+                <dt>Manas River</dt>
+                <dd>Western frontier after the victory at Itakhuli, 1682</dd>
+              </div>
+            </dl>
+          </div>
+
+          <figure className="kingdom-map-figure">
+            <img
+              src={ahomMapImg}
+              alt="Map of the Ahom kingdom across the Brahmaputra valley, with Guwahati, Jorhat and Bengmara marked"
+              loading="lazy"
+            />
+            <figcaption>Illustrative map of the Ahom kingdom at its height</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      {/* =========================================================
+          THEMED THREE-PILLARS SECTION (Ahom Foundation & Statecraft)
+          ========================================================= */}
+      <section className="themed-pillars-section">
+        <div className="royal-container">
+          <div className="heritage-grid">
+            <div className="heritage-grid-intro">
+              <h2 className="themed-pillars-title">
+                Visionary statecraft that built an <span className="gold-text">enduring empire</span>.
+              </h2>
+            </div>
+
+            {AHOM_HERITAGE_SITES.map((site) => (
+              <Link key={site.name} to="/vault" className="heritage-site-card">
+                <div className="heritage-site-thumb">
+                  <img
+                    src={site.image}
+                    alt={site.name}
+                    loading="lazy"
+                  />
+                </div>
+                <div className="heritage-site-body">
+                  <h3 className="heritage-site-name">{site.name}</h3>
+                  <p className="heritage-site-place">{site.place}</p>
+                </div>
+              </Link>
+            ))}
           </div>
         </div>
       </section>
@@ -398,7 +445,6 @@ export default function HomePage() {
       <section className="section-wrapper royal-light-tint" style={{ padding: '4rem 0' }}>
         <div className="royal-container">
           <div className="section-head">
-            <span className="section-subtitle">Interactive Learning</span>
             <h2 className="section-title">
               Test Your Knowledge of <span className="gold-text">Ahom History</span>
             </h2>
@@ -492,31 +538,17 @@ export default function HomePage() {
       </section>
 
       {/* =========================================================
-          CALL TO ACTION / HOMAGE PROMPT
+          UNESCO WORLD HERITAGE BANNER (Charaideo Maidams)
           ========================================================= */}
-      <section className="section-wrapper" style={{ paddingBottom: '3.5rem' }}>
+      <section className="unesco-home-section">
         <div className="royal-container">
-          <div className="homage-cta-banner">
-            <div 
-              className="homage-cta-bg-layer" 
-              style={{ backgroundImage: `url(${ranggharImg})` }} 
+          <Link to="/vault" className="unesco-home-banner">
+            <img
+              src={unescoBannerImg}
+              alt="Charaideo Maidams, UNESCO World Heritage Site"
+              loading="lazy"
             />
-            <div className="homage-cta-overlay" />
-            <div className="homage-cta-content">
-              <h2 className="homage-cta-title">
-                Keep the Legacy of <span className="homage-gold-highlight">Bor Asom</span> Alive
-              </h2>
-              <p className="homage-cta-desc">
-                Chaolung Sukaphaa's immortal message of inclusivity, harmony, and unyielding defense
-                of self-respect remains the beating heart of Assam. Share your tribute on the community wall.
-              </p>
-              <div style={{ display: 'flex', justifyContent: 'center' }}>
-                <Button to="/tribute" variant="filled" onDark arrow>
-                  Write a Tribute to Sukaphaa
-                </Button>
-              </div>
-            </div>
-          </div>
+          </Link>
         </div>
       </section>
 
@@ -524,6 +556,11 @@ export default function HomePage() {
           HERITAGE TOURISM & SCENIC PRE-FOOTER SHOWCASE
           ========================================================= */}
       <HeritageTourismSection />
+
+      {/* =========================================================
+          PRE-FOOTER: 800TH ASOM DIVAS COUNTDOWN CARD
+          ========================================================= */}
+      <CentenaryCTA />
     </div>
   )
 }

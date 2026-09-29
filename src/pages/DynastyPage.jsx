@@ -1,59 +1,39 @@
 import { Link } from 'react-router-dom'
-import { Sword, ArrowRight } from 'lucide-react'
 import { DYNASTY_RULERS } from '../data/ahomData'
 import lachitImg from '../images/lachit.png'
+import joymotiImg from '../images/joymoti_kuwori.jpg'
 import Button from '../components/common/Button'
+import PageBanner from '../components/PageBanner'
 
 export default function DynastyPage() {
   return (
-    <div className="dynasty-page-view" style={{ paddingTop: '2.5rem' }}>
-      <div className="royal-container">
-        {/* Header */}
-        <div style={{ textAlign: 'center', maxWidth: '850px', margin: '0 auto 3.5rem' }}>
-          <h1 style={{ fontSize: 'clamp(2.4rem, 4.5vw, 3.8rem)', marginBottom: '1.25rem' }}>
-            THE 600-YEAR <br />
-            <span className="gold-text">AHOM DYNASTY</span>
-          </h1>
-          <p style={{ fontSize: '1.15rem', color: 'var(--text-secondary)', lineHeight: '1.75' }}>
-            Spanning forty consecutive Swargadeos, the Ahom Kingdom created an extraordinary 
-            tradition of military resilience, administrative brilliance, and enduring monuments 
-            that defeated 17 Mughal invasions and preserved Assam's independent identity.
-          </p>
-        </div>
+    <div className="dynasty-page-view">
+      <PageBanner
+        title="Ahom Kings"
+        subtitle="Spanning forty consecutive Swargadeos, the Ahom Kingdom created an extraordinary tradition of military resilience, administrative brilliance, and enduring monuments that defeated 17 Mughal invasions and preserved Assam's independent identity."
+        crumbs={[{ label: 'Ahom Kings' }]}
+      />
 
+      <div className="royal-container" style={{ paddingTop: '4rem' }}>
         {/* Saraighat Spotlight Box with Lachit Borphukan */}
         <div className="saraighat-spotlight-card">
           <div className="saraighat-spotlight-content">
-            <div className="saraighat-spotlight-kicker">
-              <Sword size={16} />
-              <span>1671 CE · Battle of Saraighat</span>
-            </div>
-
-            <h2 className="saraighat-spotlight-title">
-              Lachit Borphukan
-            </h2>
-
+            <h2 className="saraighat-spotlight-title">Lachit Borphukan</h2>
             <p className="saraighat-spotlight-lead">
-              The supreme Ahom Commander-in-Chief who routed the imperial Mughal armada on the Brahmaputra River, safeguarding Assam's six-century sovereignty.
+              Victor of the Battle of Saraighat, 1671.
             </p>
 
             <blockquote className="saraighat-spotlight-quote">
-              “My maternal uncle is not greater than my motherland.”
-              <span>— দেশতকৈ মোমাই ডাঙৰ নহয়</span>
+              <p>“My maternal uncle is not greater than my motherland.”</p>
+              <span lang="as">দেশতকৈ মোমাই ডাঙৰ নহয়</span>
             </blockquote>
-
-            <div className="saraighat-spotlight-badges">
-              <span className="saraighat-badge gold">17 Invasions Repelled</span>
-              <span className="saraighat-badge crimson">Brahmaputra Naval Mastery</span>
-              <span className="saraighat-badge gold">Lachit Divas · 24 Nov</span>
-            </div>
           </div>
 
           <div className="saraighat-spotlight-img-wrap">
-            <img 
-              src={lachitImg} 
-              alt="General Lachit Borphukan" 
-              className="saraighat-spotlight-img" 
+            <img
+              src={lachitImg}
+              alt="Statue of General Lachit Borphukan leading his soldiers"
+              className="saraighat-spotlight-img"
             />
           </div>
         </div>
@@ -73,40 +53,26 @@ export default function DynastyPage() {
                 <h3 className="ruler-name">{ruler.name}</h3>
                 <span className="ruler-title">{ruler.title}</span>
                 <p className="ruler-achievements">{ruler.achievements}</p>
-                <blockquote className="ruler-quote-box">
-                  "{ruler.keyQuote}"
-                </blockquote>
               </div>
+              <blockquote className="ruler-quote-box">
+                "{ruler.keyQuote}"
+              </blockquote>
             </div>
           ))}
         </div>
 
         {/* Joymoti Tribute Box */}
-        <div style={{
-          background: '#FFFFFF',
-          border: '1.5px solid rgba(166, 43, 43, 0.2)',
-          borderRadius: 'var(--radius-xl)',
-          padding: '2.75rem',
-          display: 'grid',
-          gridTemplateColumns: '1fr 2fr',
-          gap: '2.5rem',
-          alignItems: 'center',
-          marginBottom: '5rem',
-          boxShadow: 'var(--shadow-md)'
-        }}>
-          <div>
+        <div className="joymoti-feature">
+          <div className="joymoti-portrait">
+            <img src={joymotiImg} alt="Queen Joymoti Kunwari at Jerenga Pathar" loading="lazy" />
+          </div>
+          <div className="joymoti-body">
             <span className="crimson-badge" style={{ marginBottom: '0.85rem' }}>
               Jerenga Pathar (1679 CE)
             </span>
-            <h3 style={{ fontSize: '1.85rem', color: '#1F0D12', marginBottom: '0.5rem', fontWeight: 400 }}>
-              Queen Joymoti Kunwari
-            </h3>
-            <p style={{ color: 'var(--crimson-primary)', fontSize: '0.95rem', fontWeight: 700, letterSpacing: '0.02em' }}>
-              The Supreme Martyr of Assam's Sovereignty
-            </p>
-          </div>
-          <div>
-            <p style={{ color: 'var(--text-secondary)', lineHeight: '1.8', fontSize: '1rem' }}>
+            <h3 className="joymoti-name">Queen Joymoti Kunwari</h3>
+            <p className="joymoti-title">The Supreme Martyr of Assam's Sovereignty</p>
+            <p className="joymoti-story">
               When the cruel puppet boy-king Sulikphaa (Lora Roja) launched a purge against all able-bodied 
               royal princes, Prince Gadapani went underground. His noble wife, Princess Joymoti, was 
               captured and subjected to 14 grueling days of continuous torture strapped to thorny trees 

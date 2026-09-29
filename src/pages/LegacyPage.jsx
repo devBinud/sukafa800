@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { BookOpen, Flame, Shield, Users, Sword, Compass, ChevronDown, ChevronUp } from 'lucide-react'
 import { AHOM_CULTURE } from '../data/ahomData'
 import Button from '../components/common/Button'
+import PageBanner from '../components/PageBanner'
 
 const AHOM_FAQS = [
   {
@@ -38,21 +39,14 @@ export default function LegacyPage() {
   };
 
   return (
-    <div className="legacy-page-view" style={{ paddingTop: '2.5rem' }}>
-      <div className="royal-container">
-        {/* Header */}
-        <div style={{ textAlign: 'center', maxWidth: '850px', margin: '0 auto 3.5rem' }}>
-          <h1 style={{ fontSize: 'clamp(2.4rem, 4.5vw, 3.8rem)', marginBottom: '1.25rem' }}>
-            BUILDING <br />
-            <span className="gold-text">BOR ASOM</span>
-          </h1>
-          <p style={{ fontSize: '1.15rem', color: 'var(--text-secondary)', lineHeight: '1.75' }}>
-            Sukapha won the valley through kinship, not conquest. Through social synthesis, shared councils
-            and inclusive governance, his heirs shaped the Buranjis, the Paik system and Me-Dam-Me-Phi:
-            the enduring cultural soul of Greater Assam.
-          </p>
-        </div>
+    <div className="legacy-page-view">
+      <PageBanner
+        title="The Legacy"
+        subtitle="Sukapha won the valley through kinship, not conquest. Through social synthesis, shared councils and inclusive governance, his heirs shaped the Buranjis, the Paik system and Me-Dam-Me-Phi: the enduring cultural soul of Greater Assam."
+        crumbs={[{ label: 'The Legacy' }]}
+      />
 
+      <div className="royal-container" style={{ paddingTop: '4rem' }}>
         {/* Culture Cards Grid */}
         <div className="culture-grid" style={{ marginBottom: '5rem' }}>
           {AHOM_CULTURE.map((item, idx) => (
@@ -84,19 +78,6 @@ export default function LegacyPage() {
           position: 'relative',
           overflow: 'hidden'
         }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem', marginBottom: '0.85rem' }}>
-            <Users size={22} style={{ color: '#F5C842' }} />
-            <span style={{ 
-              fontFamily: 'var(--font-serif)', 
-              fontWeight: 400, 
-              letterSpacing: '0.1em', 
-              textTransform: 'uppercase', 
-              fontSize: '0.88rem',
-              color: '#F5C842'
-            }}>
-              Democratic Constitutionalism
-            </span>
-          </div>
           <h2 style={{ fontSize: 'clamp(1.8rem, 3.2vw, 2.5rem)', color: '#FFFFFF', fontWeight: 400, marginBottom: '1.25rem' }}>
             The Council of Gohains: Checks &amp; Balances in Medieval Asia
           </h2>
@@ -158,9 +139,8 @@ export default function LegacyPage() {
         </div>
 
         {/* FAQ Accordion Section */}
-        <div id="insights" style={{ maxWidth: '860px', margin: '0 auto 5rem', scrollMarginTop: '6rem' }}>
+        <div id="insights" style={{ marginBottom: '5rem', scrollMarginTop: '6rem' }}>
           <div style={{ textAlign: 'center', marginBottom: '2.5rem' }}>
-            <span className="section-subtitle">Frequently Asked Questions</span>
             <h2 className="section-title">Ahom History &amp; Legacy Insights</h2>
           </div>
 

@@ -3,6 +3,7 @@ import { MapPin, Radio, Users, GraduationCap, ShoppingBag, Newspaper, CheckCircl
 import CentenaryCountdown from '../components/CentenaryCountdown'
 import { CENTENARY_EVENTS, EVENT_CATEGORIES, PARTICIPANT_TYPES } from '../data/centenaryEvents'
 import Button from '../components/common/Button'
+import PageBanner from '../components/PageBanner'
 
 const EMPTY_FORM = {
   name: '',
@@ -39,20 +40,14 @@ export default function EventsPage() {
   const selectedEvent = CENTENARY_EVENTS.find((ev) => ev.id === formData.eventId);
 
   return (
-    <div className="events-page-view" style={{ paddingTop: '2.5rem' }}>
-      <div className="royal-container">
-        {/* Header */}
-        <div style={{ textAlign: 'center', maxWidth: '850px', margin: '0 auto 2.5rem' }}>
-          <h1 style={{ fontSize: 'clamp(2.4rem, 4.5vw, 3.8rem)', marginBottom: '1.25rem' }}>
-            SUKAPHA 800 <br />
-            <span className="gold-text">1228 – 2028 Celebrations</span>
-          </h1>
-          <p style={{ fontSize: '1.15rem', color: 'var(--text-secondary)', lineHeight: '1.75' }}>
-            State ceremonies, youth contests, scholarly seminars and live broadcasts marking
-            eight hundred years since Chaolung Sukapha reached the Brahmaputra valley.
-          </p>
-        </div>
+    <div className="events-page-view">
+      <PageBanner
+        title="Sukapha 800 Celebrations"
+        subtitle="State ceremonies, youth contests, scholarly seminars and live broadcasts marking eight hundred years since Chaolung Sukapha reached the Brahmaputra valley."
+        crumbs={[{ label: 'Celebrations' }]}
+      />
 
+      <div className="royal-container" style={{ paddingTop: '4rem' }}>
         {/* Dashboard summary */}
         <div className="events-dashboard-strip">
           <div>
@@ -148,7 +143,6 @@ export default function EventsPage() {
         {/* Registration */}
         <section id="register" className="events-register-card">
           <div className="events-register-intro">
-            <span className="events-strip-kicker">Register for Events</span>
             <h2>Attend the Festivities</h2>
             <p>
               Reserve your place at a ceremony, contest or seminar. Registration is free; a confirmation

@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { Heart, Sparkles, Send, MapPin, Calendar, BookOpen, CheckCircle2, MessageSquare } from 'lucide-react'
 import { COMMUNITY_TRIBUTES } from '../data/ahomData'
 import Button from '../components/common/Button'
+import PageBanner from '../components/PageBanner'
 
 const BADGE_OPTIONS = [
   "Pride of Bor Asom",
@@ -62,20 +63,14 @@ export default function TributePage() {
   };
 
   return (
-    <div className="tribute-page-view" style={{ paddingTop: '2.5rem' }}>
-      <div className="royal-container">
-        {/* Header */}
-        <div style={{ textAlign: 'center', maxWidth: '850px', margin: '0 auto 3.5rem' }}>
-          <h1 style={{ fontSize: 'clamp(2.4rem, 4.5vw, 3.8rem)', marginBottom: '1.25rem' }}>
-            COMMUNITY TRIBUTE WALL <br />
-            <span className="gold-text">Honor Chaolung Sukaphaa</span>
-          </h1>
-          <p style={{ fontSize: '1.15rem', color: 'var(--text-secondary)', lineHeight: '1.75' }}>
-            Join thousands of voices in paying heartfelt respects to the visionary founder 
-            of Bor Asom. Leave your message on the royal scroll of honor.
-          </p>
-        </div>
+    <div className="tribute-page-view">
+      <PageBanner
+        title="Community Tribute Wall"
+        subtitle="Join thousands of voices in paying heartfelt respects to the visionary founder of Bor Asom. Leave your message on the royal scroll of honor."
+        crumbs={[{ label: 'Pay Tribute' }]}
+      />
 
+      <div className="royal-container" style={{ paddingTop: '4rem' }}>
         {/* Tribute Section Grid */}
         <div className="tribute-section-grid" style={{ marginBottom: '5rem' }}>
           {/* Tribute Form Card */}
@@ -211,9 +206,6 @@ export default function TributePage() {
           marginBottom: '5rem'
         }}>
           <div style={{ textAlign: 'center', maxWidth: '750px', margin: '0 auto 2.5rem' }}>
-            <span className="gold-badge" style={{ marginBottom: '0.6rem' }}>
-              <MapPin size={14} /> Traveler's Pilgrimage
-            </span>
             <h2 style={{ fontSize: '2rem', color: '#fff', marginBottom: '0.75rem' }}>
               Visiting the Historic Ahom Capitals
             </h2>

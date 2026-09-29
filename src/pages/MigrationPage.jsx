@@ -1,30 +1,24 @@
-import { Landmark, Heart, Shield } from 'lucide-react'
+import { Shield } from 'lucide-react'
 import { SUKAPHA_INFO } from '../data/ahomData'
 import MigrationTimeline from '../components/MigrationTimeline'
 import Button from '../components/common/Button'
+import PageBanner from '../components/PageBanner'
 
 export default function MigrationPage() {
   return (
-    <div className="migration-page-view" style={{ paddingTop: '2.5rem' }}>
-      {/* Header Banner */}
-      <div className="royal-container">
-        <div style={{ textAlign: 'center', maxWidth: '850px', margin: '0 auto 3.5rem' }}>
-          <h1 style={{ fontSize: 'clamp(2.4rem, 4.5vw, 3.8rem)', marginBottom: '1.25rem' }}>
-            FROM MONG MAO <br />
-            <span className="gold-text">To Charaideo</span>
-          </h1>
-          <p style={{ fontSize: '1.15rem', color: 'var(--text-secondary)', lineHeight: '1.75' }}>
-            The visionary Tai-Ahom prince whose 13-year trek across the Patkai mountains 
-            laid the bedrock of a 600-year sovereign kingdom and forged a timeless 
-            identity of harmony among Assam's indigenous peoples.
-          </p>
-        </div>
+    <div className="migration-page-view">
+      <PageBanner
+        title="The Migration"
+        subtitle="The visionary Tai-Ahom prince whose 13-year trek across the Patkai mountains laid the bedrock of a 600-year sovereign kingdom and forged a timeless identity of harmony among Assam's indigenous peoples."
+        crumbs={[{ label: 'The Migration' }]}
+      />
 
+      <div className="royal-container" style={{ paddingTop: '4rem' }}>
         {/* Interactive multi-stage journey */}
         <MigrationTimeline />
 
         {/* Hero Split Card */}
-        <div className="unesco-feature-card" style={{ maxWidth: '960px', margin: '0 auto 5rem' }}>
+        <div className="unesco-feature-card" style={{ marginBottom: '5rem' }}>
           <div className="unesco-img-wrap">
             <img 
               src="/images/sukapha-hero.jpg" 
@@ -37,7 +31,6 @@ export default function MigrationPage() {
           <div className="unesco-details">
             <div style={{ display: 'flex', gap: '0.5rem', marginBottom: '1rem', flexWrap: 'wrap' }}>
               <span className="gold-badge">Reign: 1228 - 1268 CE</span>
-              <span className="crimson-badge">Tai: Chao-Lung Siu-Ka-Pha</span>
             </div>
             <h2 className="unesco-title" style={{ fontSize: '2rem' }}>
               {SUKAPHA_INFO.assameseName}
@@ -50,13 +43,12 @@ export default function MigrationPage() {
             </p>
 
             <blockquote style={{ 
-              background: 'rgba(212, 175, 55, 0.08)', 
-              borderLeft: '3px solid var(--gold-primary)', 
-              padding: '1rem 1.25rem', 
+              background: 'rgba(212, 175, 55, 0.08)',
+              padding: '1rem 1.25rem',
               fontFamily: 'var(--font-cursive)',
               fontStyle: 'italic',
               color: 'var(--gold-light)',
-              borderRadius: '0 8px 8px 0',
+              borderRadius: '12px',
               marginBottom: '1.5rem',
               fontSize: '1rem'
             }}>
@@ -64,10 +56,10 @@ export default function MigrationPage() {
             </blockquote>
 
             <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
-              <Button to="/tribute" variant="filled" icon={<Heart size={16} />}>
+              <Button to="/tribute" variant="filled">
                 Pay Homage
               </Button>
-              <Button to="/vault" variant="outline" icon={<Landmark size={16} />}>
+              <Button to="/vault" variant="outline">
                 Visit Charaideo
               </Button>
             </div>
@@ -75,7 +67,7 @@ export default function MigrationPage() {
         </div>
 
         {/* Narrative Chapters */}
-        <div style={{ maxWidth: '960px', margin: '0 auto 5rem' }}>
+        <div style={{ marginBottom: '5rem' }}>
           {/* Chapter 1 */}
           <div className="pillar-card" style={{ marginBottom: '2.5rem', padding: '2.5rem' }}>
             <span className="gold-badge" style={{ width: 'fit-content', marginBottom: '0.75rem' }}>

@@ -1,19 +1,16 @@
 import { ShieldCheck, FileText, Accessibility } from 'lucide-react'
+import PageBanner from '../components/PageBanner'
 
 export default function LegalPage() {
   return (
-    <div className="legal-page-view" style={{ paddingTop: '2.5rem' }}>
-      <div className="royal-container" style={{ maxWidth: '860px' }}>
-        <div style={{ textAlign: 'center', marginBottom: '2.5rem' }}>
-          <h1 style={{ fontSize: 'clamp(2.2rem, 4vw, 3.2rem)', marginBottom: '1rem' }}>
-            Platform <span className="gold-text">Policies</span>
-          </h1>
-          <p style={{ color: 'var(--text-secondary)' }}>
-            How the Sukapha 800 commemoration platform handles your information, how it may be used,
-            and our commitment to making it usable by everyone.
-          </p>
-        </div>
+    <div className="legal-page-view">
+      <PageBanner
+        title="Platform Policies"
+        subtitle="How the Sukapha 800 commemoration platform handles your information, how it may be used, and our commitment to making it usable by everyone."
+        crumbs={[{ label: 'Policies' }]}
+      />
 
+      <div className="royal-container" style={{ paddingTop: '4rem' }}>
         <section id="privacy" className="legal-section">
           <h2><ShieldCheck size={22} /> Privacy Policy</h2>
           <p>

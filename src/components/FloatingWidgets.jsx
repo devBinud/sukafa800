@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { ArrowUp } from 'lucide-react'
+import { scrollToTarget } from '../lib/smoothScroll'
 
 export default function FloatingWidgets() {
   const [scrollProgress, setScrollProgress] = useState(0);
@@ -21,7 +22,7 @@ export default function FloatingWidgets() {
   }, []);
 
   const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    scrollToTarget(0);
   };
 
   const radius = 20;
@@ -35,7 +36,6 @@ export default function FloatingWidgets() {
         <button
           onClick={scrollToTop}
           className="floating-btn"
-          title={`Return to Crest (${scrollProgress}%)`}
           aria-label="Scroll to top"
           style={{ position: 'relative' }}
         >
@@ -49,7 +49,7 @@ export default function FloatingWidgets() {
               cx="25"
               cy="25"
               r={radius}
-              stroke="rgba(212, 175, 55, 0.2)"
+              stroke="rgba(166, 43, 43, 0.15)"
               strokeWidth="3"
               fill="transparent"
             />
@@ -57,14 +57,14 @@ export default function FloatingWidgets() {
               cx="25"
               cy="25"
               r={radius}
-              stroke="#D4AF37"
+              stroke="#A62B2B"
               strokeWidth="3"
               strokeDasharray={`${circumference} ${circumference}`}
               style={{ strokeDashoffset, transition: 'stroke-dashoffset 0.1s' }}
               fill="transparent"
             />
           </svg>
-          <ArrowUp size={18} style={{ color: 'var(--gold-light)', zIndex: 1 }} />
+          <ArrowUp size={18} style={{ color: 'var(--crimson-primary)', zIndex: 1 }} />
         </button>
       )}
 

@@ -48,7 +48,6 @@ export default function Footer() {
                   rel="noopener noreferrer"
                   className="footer-social-icon"
                   aria-label={label}
-                  title={label}
                 >
                   <Icon size={17} />
                 </a>
@@ -85,9 +84,10 @@ export default function Footer() {
             <h4 className="footer-col-title">Connect &amp; Visit</h4>
             <div className="footer-contact-block">
               <span className="footer-contact-label">
-                <Building2 size={15} /> Secretariat
+                <Building2 size={15} /> Head Office
               </span>
-              <p>Cultural Affairs Dept,<br />Dispur, Guwahati,<br />Assam.</p>
+              <p className="footer-org-name" lang="as">লুইত-পাটকাই সভ্যতা সংৰক্ষণ সমিতি</p>
+              <p>Sonari, Charaideo,<br />Assam 785690</p>
             </div>
             <div className="footer-contact-block">
               <span className="footer-contact-label">
@@ -106,14 +106,10 @@ export default function Footer() {
 
         {/* Bottom-most Copyright & Compliance Bar */}
         <div className="footer-bottom-bar">
-          <span>Copyright © 2028 Celebration Committee. All Rights Reserved.</span>
-          <nav className="footer-legal-links" aria-label="Compliance">
-            <Link to="/legal#privacy">Privacy Policy</Link>
-            <span aria-hidden="true">|</span>
-            <Link to="/legal#terms">Terms of Commemoration Platform Use</Link>
-            <span aria-hidden="true">|</span>
-            <Link to="/legal#accessibility">Website Accessibility Guidelines</Link>
-          </nav>
+          <span>© 2028 <span lang="as">লুইত-পাটকাই সভ্যতা সংৰক্ষণ সমিতি</span>. All Rights Reserved.</span>
+          <span className="footer-credit">
+            Designed &amp; Developed by <strong>Binud Software Solutions</strong>
+          </span>
         </div>
       </div>
     </footer>

@@ -1,3 +1,8 @@
+import charaideoMoidamImg from '../images/soraideu_moidam.jpeg'
+import rangGharImg from '../images/visionary_statecraft/rang_ghar.jpg'
+import talatalGharImg from '../images/visionary_statecraft/talatal_ghar.jpeg'
+import joysagarTankImg from '../images/joysagar_tank.jpeg'
+import stoneBridgeImg from '../images/stone_bridge.jpeg'
 // Rich Historical Data Repository for Chaolung Sukaphaa & The Ahom Kingdom (1228-1826 CE)
 
 export const SUKAPHA_INFO = {
@@ -209,7 +214,7 @@ export const AHOM_MONUMENTS = [
     era: "13th - 18th Century CE",
     description: "The royal burial tumuli of Ahom monarchs and queens. Known as the 'Pyramids of Assam', these earthen barrows contain vaulted brick crypts constructed with indigenous mortar made of sticky rice, duck eggs, and pulses.",
     specs: ["90+ Preserved Maidams", "UNESCO Inscribed in 2024", "Sacred ancestral sanctuary (Che-Rai-Doi)", "Vaulted brick octagonal structures"],
-    image: "/images/ahom-monuments.jpg",
+    image: charaideoMoidamImg,
   },
   {
     name: "Rang Ghar",
@@ -218,7 +223,7 @@ export const AHOM_MONUMENTS = [
     era: "1744-1751 CE (Swargadeo Pramatta Singha)",
     description: "Asia's oldest surviving royal sports pavilion. The two-storied red-brick edifice features a roof curved like an inverted Ahom royal war canoe (Khel-Nau), capped with a decorative golden crocodile motif.",
     specs: ["2-Storey Royal Gallery", "Boat-shaped vaulted terracotta roof", "Witness to Bihu & elephant fights", "Special mortar of Bora rice & snail lime"],
-    image: "/images/ahom-monuments.jpg",
+    image: rangGharImg,
   },
   {
     name: "Talatal Ghar & Kareng Ghar",
@@ -227,7 +232,7 @@ export const AHOM_MONUMENTS = [
     era: "1751-1769 CE (Swargadeo Rajeshwar Singha)",
     description: "A colossal 7-storied palace complex designed with three underground floors and secret tunnels connecting to the Dikhow River and Gargaon, serving as an impregnable military command and refuge center.",
     specs: ["7 Total Storeys (3 Underground)", "Secret escape subterranean tunnels", "Strategic military watchtower", "Indigenously fired terracotta bricks"],
-    image: "/images/ahom-monuments.jpg",
+    image: talatalGharImg,
   },
   {
     name: "Shiva Dol & Sivasagar Borpukhuri",
@@ -236,7 +241,7 @@ export const AHOM_MONUMENTS = [
     era: "1734 CE (Queen Ambika / Shiva Singha)",
     description: "Towering 104 feet above the landscape, Shiva Dol is crowned by an 8-foot-tall pure gold dome (Kolosi), overlooking the colossal 257-acre human-made Borpukhuri reservoir where water remains crystal-clear year-round.",
     specs: ["104-Foot Temple Height", "8-Foot Pure Gold Kolosi Pinnacle", "257-Acre Historic Borpukhuri Reservoir", "Vibrant Maha Shivaratri Pilgrimage"],
-    image: "/images/ahom-monuments.jpg",
+    image: joysagarTankImg,
   },
   {
     name: "Namdang Stone Bridge",
@@ -245,7 +250,7 @@ export const AHOM_MONUMENTS = [
     era: "1703 CE (Swargadeo Rudra Singha)",
     description: "Carved entirely from a single gargantuan solid block of sandstone quarried from Naga Hills. After over 320 years, it still carries regular national highway traffic (NH 37) without cracking!",
     specs: ["Cut from a Single Massive Sandstone", "Length: 60 meters, Width: 6.5 meters", "Active heavy vehicular bridge today", "320+ Years of structural resilience"],
-    image: "/images/ahom-monuments.jpg",
+    image: stoneBridgeImg,
   },
 ];
 

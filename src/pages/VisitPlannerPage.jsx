@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { CheckCircle2, Sparkles } from 'lucide-react'
 import Button from '../components/common/Button'
+import PageBanner from '../components/PageBanner'
 
 export default function VisitPlannerPage() {
   const [plannerData, setPlannerData] = useState({
@@ -44,20 +45,15 @@ export default function VisitPlannerPage() {
   };
 
   return (
-    <div className="visit-planner-page-view" style={{ paddingTop: '2.5rem' }}>
-      <div className="royal-container">
-        <div style={{ textAlign: 'center', maxWidth: '850px', margin: '0 auto 3.5rem' }}>
-          <h1 style={{ fontSize: 'clamp(2.4rem, 4.5vw, 3.8rem)', marginBottom: '1.25rem' }}>
-            HERITAGE TOUR <br />
-            <span className="gold-text">PILGRIMAGE PLANNER</span>
-          </h1>
-          <p style={{ fontSize: '1.15rem', color: 'var(--text-secondary)', lineHeight: '1.75' }}>
-            Plan your cultural journey across the historical landmarks, sacred Maidams, 
-            and royal subterranean palaces of the Ahom Kingdom in Upper Assam.
-          </p>
-        </div>
+    <div className="visit-planner-page-view">
+      <PageBanner
+        title="Heritage Tour Planner"
+        subtitle="Plan your cultural journey across the historical landmarks, sacred Maidams, and royal subterranean palaces of the Ahom Kingdom in Upper Assam."
+        crumbs={[{ label: 'Visit Planner' }]}
+      />
 
-        <div style={{ maxWidth: '820px', margin: '0 auto 5rem' }}>
+      <div className="royal-container" style={{ paddingTop: '4rem' }}>
+        <div style={{ marginBottom: '5rem' }}>
           <div className="tribute-form-card" style={{ padding: '3rem' }}>
             {submitted ? (
               <div style={{ textAlign: 'center', padding: '2rem 1rem' }}>

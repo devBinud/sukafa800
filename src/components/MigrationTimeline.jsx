@@ -1,14 +1,46 @@
-import { useState } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { ArrowLeft, ArrowRight, MapPin } from 'lucide-react'
 import { MIGRATION_JOURNEY } from '../data/ahomData'
 
 // Multi-stage journey from Mong Mao across the Patkai hills to Charaideo.
-// Desktop: horizontal stage track + detail panel. Phones: vertical swipe deck.
+// Desktop: horizontal stage track + detail panel. Phones: vertical line that
+// fills as the reader scrolls past each step.
 export default function MigrationTimeline() {
   const [activeIdx, setActiveIdx] = useState(0);
   const stage = MIGRATION_JOURNEY[activeIdx];
   const lastIdx = MIGRATION_JOURNEY.length - 1;
   const progress = (activeIdx / lastIdx) * 100;
+
+  // Phone view: how far down the list the reader is (0–1) and how many
+  // steps' markers have been passed, measured against a line 60% down the screen
+  const verticalRef = useRef(null);
+  const [scrollProgress, setScrollProgress] = useState(0);
+  const [reachedCount, setReachedCount] = useState(1);
+
+  useEffect(() => {
+    let frame = 0;
+    const update = () => {
+      frame = 0;
+      const list = verticalRef.current;
+      if (!list || !list.offsetHeight) return;
+      const trigger = window.innerHeight * 0.6;
+      const rect = list.getBoundingClientRect();
+      setScrollProgress(Math.min(1, Math.max(0, (trigger - rect.top) / rect.height)));
+      const markers = list.querySelectorAll('.mig-step-marker');
+      let count = 0;
+      markers.forEach((m) => { if (m.getBoundingClientRect().top <= trigger) count += 1; });
+      setReachedCount(Math.max(1, count));
+    };
+    const onScroll = () => { if (!frame) frame = requestAnimationFrame(update); };
+    update();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+    return () => {
+      window.removeEventListener('scroll', onScroll);
+      window.removeEventListener('resize', onScroll);
+      if (frame) cancelAnimationFrame(frame);
+    };
+  }, []);
 
   const handleKeyDown = (e) => {
     const step = e.key === 'ArrowRight' ? 1 : e.key === 'ArrowLeft' ? -1 : 0;
@@ -62,15 +94,19 @@ export default function MigrationTimeline() {
         </article>
       </div>
 
-      {/* Phones: vertical drag-and-swipe flow */}
-      <ol className="mig-vertical" aria-label="Migration stages">
+      {/* Phones: vertical line that fills crimson as you scroll */}
+      <ol
+        ref={verticalRef}
+        className="mig-vertical"
+        aria-label="Migration stages"
+        style={{ '--mv-progress': scrollProgress }}
+      >
         {MIGRATION_JOURNEY.map((item, idx) => (
-          <li key={item.year} className="mig-swipe-card">
-            <span className="mig-act">Act {toRoman(idx + 1)} · {item.badge}</span>
-            <span className="mig-swipe-year">{item.year}</span>
-            <h3 className="mig-title">{item.title}</h3>
-            <span className="mig-location"><MapPin size={13} /> {item.location}</span>
-            <p className="mig-desc">{item.desc}</p>
+          <li key={item.year} className={`mig-step ${idx < reachedCount ? 'is-reached' : ''}`}>
+            <span className="mig-step-marker" aria-hidden="true" />
+            <h3 className="mig-step-title">{item.title}</h3>
+            <p className="mig-step-meta">{item.year} · {item.location.split(' (')[0]}</p>
+            <p className="mig-step-desc">{item.desc}</p>
           </li>
         ))}
       </ol>

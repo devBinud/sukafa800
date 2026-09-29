@@ -1,29 +1,25 @@
 import { MapPin, CheckCircle2, Shield, Layers } from 'lucide-react'
 import { AHOM_MONUMENTS } from '../data/ahomData'
 import Button from '../components/common/Button'
+import PageBanner from '../components/PageBanner'
+import charaideoMoidamImg from '../images/soraideu_moidam.jpeg'
 
 export default function HeritageVaultPage() {
   return (
-    <div className="vault-page-view" style={{ paddingTop: '2.5rem' }}>
-      <div className="royal-container">
-        {/* Header */}
-        <div style={{ textAlign: 'center', maxWidth: '850px', margin: '0 auto 3.5rem' }}>
-          <h1 style={{ fontSize: 'clamp(2.4rem, 4.5vw, 3.8rem)', marginBottom: '1.25rem' }}>
-            THE HERITAGE <br />
-            <span className="gold-text">VAULT</span>
-          </h1>
-          <p style={{ fontSize: '1.15rem', color: 'var(--text-secondary)', lineHeight: '1.75' }}>
-            From the newly inscribed UNESCO World Heritage Charaideo Maidams to Asia's earliest 
-            royal amphitheatre Rang Ghar, explore the indomitable architecture of the Ahom Kingdom.
-          </p>
-        </div>
+    <div className="vault-page-view">
+      <PageBanner
+        title="Heritage Vault"
+        subtitle="From the newly inscribed UNESCO World Heritage Charaideo Maidams to Asia's earliest royal amphitheatre Rang Ghar, explore the indomitable architecture of the Ahom Kingdom."
+        crumbs={[{ label: 'Heritage Vault' }]}
+      />
 
+      <div className="royal-container" style={{ paddingTop: '4rem' }}>
         {/* Charaideo World Heritage Hero Box */}
         <div className="unesco-feature-card" style={{ marginBottom: '4.5rem' }}>
           <div className="unesco-img-wrap">
-            <img 
-              src="/images/ahom-monuments.jpg" 
-              alt="Charaideo Maidams and Rang Ghar" 
+            <img
+              src={charaideoMoidamImg}
+              alt="Charaideo Maidams, UNESCO World Heritage Site"
               className="unesco-img"
             />
             <div className="unesco-img-overlay" />
@@ -32,7 +28,6 @@ export default function HeritageVaultPage() {
           <div className="unesco-details">
             <div style={{ display: 'flex', gap: '0.5rem', marginBottom: '1rem', flexWrap: 'wrap' }}>
               <span className="gold-badge">UNESCO Inscribed: 2024</span>
-              <span className="crimson-badge">Charaideo, Assam</span>
             </div>
             <h2 className="unesco-title" style={{ fontSize: '2rem' }}>
               Moidams - The Sacred Burial Mounds of the Ahom Dynasty
@@ -96,7 +91,6 @@ export default function HeritageVaultPage() {
 
         {/* Monuments Grid */}
         <div id="catalog" style={{ textAlign: 'center', marginBottom: '2.5rem', scrollMarginTop: '6rem' }}>
-          <span className="section-subtitle">Monuments of Sivasagar &amp; Charaideo</span>
           <h2 className="section-title">The Royal Architectural Catalog</h2>
         </div>
 
