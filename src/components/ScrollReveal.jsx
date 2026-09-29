@@ -12,8 +12,6 @@ const REVEAL_SELECTORS = [
   '.centenary-cta',
   '.kingdom-map-figure',
   '.kingdom-map-facts > div',
-  '.journey-item',
-  '.journey-footer',
   '.about-story-block',
   '.vm-card',
   '.unesco-feature-card',
@@ -53,7 +51,8 @@ export default function ScrollReveal() {
         }
 
         const targets = gsap.utils.toArray(REVEAL_SELECTORS)
-          .filter((el) => !el.closest('.bento-hero-section'));
+          // Hero has its own intro; the milestones journey always stays static
+          .filter((el) => !el.closest('.bento-hero-section, .modern-milestones-section'));
         if (!targets.length) return;
 
         gsap.set(targets, { autoAlpha: 0, y: 48 });
