@@ -19,9 +19,6 @@ export default function CentenaryCTA() {
               <Button to="/tribute" variant="filled" onDark arrow size="lg">
                 Pay Tribute
               </Button>
-              <Button to="/visit" variant="outline" onDark size="lg">
-                Plan a Visit
-              </Button>
             </div>
           </div>
 

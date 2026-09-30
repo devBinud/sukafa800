@@ -44,7 +44,9 @@ export default function ScrollReveal() {
       ctx = gsap.context(() => {
         const hero = gsap.utils.toArray(HERO_INTRO);
         if (hero.length) {
-          gsap.fromTo('.bento-hero-bg-img', { scale: 1.12 }, { scale: 1, duration: 1.8, ease: 'power3.out' });
+          gsap.fromTo('.bento-hero-figure img',
+            { autoAlpha: 0, scale: 0.94, y: 30 },
+            { autoAlpha: 1, scale: 1, y: 0, duration: 1.6, ease: 'expo.out', delay: 0.25 });
           gsap.fromTo(hero,
             { autoAlpha: 0, y: 48, filter: 'blur(8px)' },
             { autoAlpha: 1, y: 0, filter: 'blur(0px)', duration: 1.1, ease: 'expo.out', stagger: 0.12, delay: 0.1 });

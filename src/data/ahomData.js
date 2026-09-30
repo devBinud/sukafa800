@@ -129,8 +129,7 @@ export const DYNASTY_RULERS = [
     epoch: "Foundational Era",
     title: "Founder & First Swargadeo",
     image: "/images/sukapha-hero.jpg",
-    achievements: "Migrated from Mong Mao across Patkai, founded the kingdom, created Bor Asom through indigenous brotherhood, established Charaideo capital.",
-    keyQuote: "Let no man harm the original sons of this fertile land; treat them as elder and younger brothers.",
+    achievements: "Crossed the Patkai from Mong Mao, united the valley's peoples through kinship and founded Charaideo.",
   },
   {
     name: "Suhungmung (Dihingia Roja)",
@@ -138,8 +137,7 @@ export const DYNASTY_RULERS = [
     epoch: "Expansion Era",
     title: "The Great Expander & Reformer",
     image: "/images/ahom-monuments.jpg",
-    achievements: "Adopted the Hindu title Swarganarayan, introduced the Saka calendar, integrated Chutia and Kachari territories, first used firearms in Assam.",
-    keyQuote: "The boundaries of Bor Asom shall expand from the mountain crests to the mighty river bend.",
+    achievements: "Took the title Swarganarayan, annexed the Chutiya kingdom and widened the realm.",
   },
   {
     name: "Pratap Singha (Buddhi Swarganarayan)",
@@ -147,8 +145,7 @@ export const DYNASTY_RULERS = [
     epoch: "Institutional Era",
     title: "The Master Institutionalist",
     image: "/images/sukapha-hero.jpg",
-    achievements: "Created the Borbarua and Borphukan executive posts, codified the Paik system, constructed Momai Tamuli Borbarua's civic ramparts and highways.",
-    keyQuote: "A nation is only as resilient as the order of its Paiks and the fairness of its laws.",
+    achievements: "Created the Borbarua and Borphukan posts and reorganised the Paik system.",
   },
   {
     name: "Chakradhwaj Singha",
@@ -156,8 +153,7 @@ export const DYNASTY_RULERS = [
     epoch: "Mughal Resistance",
     title: "The Sovereign of Defiance",
     image: "/images/ahom-monuments.jpg",
-    achievements: "Refused subservience to Aurangzeb, restored Ahom self-respect, elevated Lachit Borphukan to Commander-in-Chief of the naval army.",
-    keyQuote: "Death is vastly preferable to a life of bowing head and tribute to foreign invaders.",
+    achievements: "Refused to submit to the Mughals and made Lachit Borphukan commander of the army.",
   },
   {
     name: "Lachit Borphukan & Udayaditya",
@@ -165,8 +161,7 @@ export const DYNASTY_RULERS = [
     epoch: "Mughal Resistance",
     title: "The Hero of Saraighat",
     image: "/images/sukapha-hero.jpg",
-    achievements: "Led the epic naval Battle of Saraighat (1671), decisively crushing the massive Mughal forces of Raja Ram Singh through sheer tactical genius.",
-    keyQuote: "My uncle is not greater than my motherland! (Deshot koi Momai dangor nohoi)",
+    achievements: "Led the Ahom forces to victory over the Mughals at the Battle of Saraighat in 1671.",
   },
   {
     name: "Queen Joymoti Kunwari",
@@ -174,8 +169,7 @@ export const DYNASTY_RULERS = [
     epoch: "Sovereign Sacrifice",
     title: "The Epitome of Supreme Sacrifice",
     image: "/images/ahom-monuments.jpg",
-    achievements: "Endured 14 days of brutal torture at Jerenga Pathar by the puppet boy king Lora Roja without revealing her fugitive husband Gadapani's whereabouts.",
-    keyQuote: "Let my flesh be broken, but the rightful protector of Asom shall survive to save the realm.",
+    achievements: "Endured torture at Jerenga Pathar rather than reveal where her husband Gadapani was hiding.",
   },
   {
     name: "Gadadhar Singha (Supaatphaa)",
@@ -183,8 +177,7 @@ export const DYNASTY_RULERS = [
     epoch: "Restoration Era",
     title: "The Iron King",
     image: "/images/sukapha-hero.jpg",
-    achievements: "Decisively defeated the Mughals at the Battle of Itakhuli (1682), expelling them forever from Assam up to the Manas River; brought complete stability.",
-    keyQuote: "The sword of Ahom sovereignty shall remain unsheathed until the border is secure forever.",
+    achievements: "Defeated the Mughals at Itakhuli in 1682 and fixed the western border at the Manas.",
   },
   {
     name: "Rudra Singha (Sukhrungphaa)",
@@ -192,8 +185,7 @@ export const DYNASTY_RULERS = [
     epoch: "Golden Renaissance",
     title: "The Visionary Statesman & Builder",
     image: "/images/ahom-monuments.jpg",
-    achievements: "Built the brick Rangpur capital, excavated Joysagar lake, constructed the Namdang Stone Bridge, patronized classical music and dance.",
-    keyQuote: "Let the culture of all lands be welcomed, while holding steadfast to our own ancestral roots.",
+    achievements: "Built the Rangpur capital, dug the Joysagar tank and raised the Namdang Stone Bridge.",
   },
   {
     name: "Pramatta Singha",
@@ -201,8 +193,7 @@ export const DYNASTY_RULERS = [
     epoch: "Golden Renaissance",
     title: "Architect of the Royal Amphitheatre",
     image: "/images/ahom-monuments.jpg",
-    achievements: "Constructed the magnificent two-storey masonry pavilion Rang Ghar at Rupahi Pathar, Asia's earliest surviving grand sports stadium.",
-    keyQuote: "Here our people shall assemble in joyous celebration, under the benevolent gaze of the Swargadeo.",
+    achievements: "Built the Rang Ghar at Rupahi Pathar, the royal pavilion for games and festivals.",
   },
 ];
 

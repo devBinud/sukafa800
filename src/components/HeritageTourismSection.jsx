@@ -33,19 +33,13 @@ export default function HeritageTourismSection() {
             </div>
           </div>
 
-          {/* Right: Asymmetric Photo Mosaic */}
+          {/* Right: two photos side by side */}
           <div className="tourism-photos-mosaic">
-            <div className="mosaic-photo-card mosaic-photo--1">
-              <img src="/images/patkai-odyssey.jpg" alt="Patkai hills and lush green landscapes of Assam" />
-              <div className="mosaic-badge">Emerald Landscapes</div>
-            </div>
-            <div className="mosaic-photo-card mosaic-photo--2">
+            <div className="mosaic-photo-card">
               <img src={charaideoMoidamImg} alt="UNESCO World Heritage Charaideo Maidams" />
-              <div className="mosaic-badge">UNESCO Charaideo</div>
             </div>
-            <div className="mosaic-photo-card mosaic-photo--3">
+            <div className="mosaic-photo-card">
               <img src={talatalGharImg} alt="Talatal Ghar, Sivasagar" />
-              <div className="mosaic-badge">Royal Architecture</div>
             </div>
           </div>
         </div>

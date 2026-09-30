@@ -1,25 +1,18 @@
 import { Link } from 'react-router-dom'
-import { Landmark, Compass, MapPin, Mail, Building2, Route } from 'lucide-react'
-import AhomCrest from './AhomCrest'
+import { SOCIAL_LINKS } from '../data/socialLinks'
 
-const HERITAGE_CHANNELS = [
-  { href: 'https://whc.unesco.org/en/list/1711', label: 'UNESCO: Moidams of the Ahom Dynasty', icon: Landmark },
-  { href: 'https://tourism.assam.gov.in/', label: 'Assam Tourism', icon: Compass },
-  { href: 'https://charaideo.assam.gov.in/', label: 'Charaideo District Heritage', icon: MapPin },
-];
-
-const DISCOVER_LINKS = [
-  { to: '/vault', label: 'Charaideo Maidams' },
-  { to: '/dynasty', label: 'Historical Archives' },
-  { to: '/legacy#insights', label: 'Research Papers' },
-  { to: '/vault#catalog', label: 'Photo & Video Assets' },
+const BOR_AXOM_LINKS = [
+  { to: '/communities', label: 'Communities' },
+  { to: '/spiritual-axis', label: 'Spiritual Axis' },
+  { to: '/monuments', label: 'Monuments & Garhs' },
+  { to: '/living-heritage', label: 'Living Heritage' },
 ];
 
 const DYNASTY_HERITAGE_LINKS = [
-  { to: '/dynasty', label: 'Forty Swargadeos' },
-  { to: '/tribute', label: 'Pay Royal Tribute' },
-  { to: '/visit', label: 'Plan Heritage Visit' },
-  { to: '/migration#route', label: 'Patkai Route Map' },
+  { to: '/migration', label: 'The Migration' },
+  { to: '/dynasty', label: 'Ahom Kings' },
+  { to: '/vault', label: 'Heritage Vault' },
+  { to: '/tribute', label: 'Pay Tribute' },
 ];
 
 export default function Footer() {
@@ -29,37 +22,36 @@ export default function Footer() {
         <div className="footer-grid">
           {/* Col 1: Heritage Trust */}
           <div>
-            <div className="brand-royal" style={{ marginBottom: '0.85rem' }}>
-              <AhomCrest size={40} />
-              <span className="brand-logo-text" style={{ fontSize: '1.35rem' }}>
-                SUKAPHA <span className="brand-logo-800">800</span>
-              </span>
-            </div>
+            <Link to="/" className="footer-logo" aria-label="Sukapha 800 Home">
+              <img src="/logo.jpeg" alt="Sukapha 800 logo" />
+            </Link>
             <p className="footer-brand-desc">
-              Celebrating eight centuries since 1228 AD, when Chaolung Sukapha crossed the Patkai hills
-              and founded a kingdom built on kinship, inclusive governance and the enduring idea of Bor Asom.
+              Celebrating 800 years of the Axomiya Mahajati: the many communities, faiths and crafts
+              that came together, from Chaolung Sukapha's arrival in 1228, to build Bor Axom.
             </p>
             <div className="footer-social-row">
-              {HERITAGE_CHANNELS.map(({ href, label, icon: Icon }) => (
+              {SOCIAL_LINKS.map(({ label, href, path }) => (
                 <a
-                  key={href}
+                  key={label}
                   href={href}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="footer-social-icon"
                   aria-label={label}
                 >
-                  <Icon size={17} />
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true">
+                    <path d={path} />
+                  </svg>
                 </a>
               ))}
             </div>
           </div>
 
-          {/* Col 2: Discover More */}
+          {/* Col 2: Bor Axom */}
           <div>
-            <h4 className="footer-col-title">Discover More</h4>
+            <h4 className="footer-col-title">Bor Axom</h4>
             <ul className="footer-links-list">
-              {DISCOVER_LINKS.map(({ to, label }) => (
+              {BOR_AXOM_LINKS.map(({ to, label }) => (
                 <li key={label}>
                   <Link to={to} className="footer-link">{label}</Link>
                 </li>
@@ -69,7 +61,7 @@ export default function Footer() {
 
           {/* Col 3: Royal Heritage */}
           <div>
-            <h4 className="footer-col-title">Royal Heritage</h4>
+            <h4 className="footer-col-title">Ahom Heritage</h4>
             <ul className="footer-links-list">
               {DYNASTY_HERITAGE_LINKS.map(({ to, label }) => (
                 <li key={label}>
@@ -79,36 +71,30 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Col 4: Connect & Visit */}
+          {/* Col 4: Contact */}
           <div>
-            <h4 className="footer-col-title">Connect &amp; Visit</h4>
+            <h4 className="footer-col-title">Contact</h4>
             <div className="footer-contact-block">
               <span className="footer-contact-label">
-                <Building2 size={15} /> Head Office
+                Head Office
               </span>
-              <p className="footer-org-name" lang="as">লুইত-পাটকাই সভ্যতা সংৰক্ষণ সমিতি</p>
-              <p>Sonari, Charaideo,<br />Assam 785690</p>
+              <p className="footer-org-name" lang="as">চাওলুং ছ্যুকাফাৰ অসমীয়া মহাজাতি গঠন আৰু বৰঅসম প্ৰতিষ্ঠাৰ আঠশ বছৰীয়া জয়ন্তী উদযাপন সমিতি</p>
+              <p>Girls College, Sivasagar,<br />Dist. Sivasagar 785650</p>
             </div>
             <div className="footer-contact-block">
               <span className="footer-contact-label">
-                <Mail size={15} /> Helpdesk
+                Helpdesk
               </span>
-              <a href="mailto:contact@sukapha800.in" className="footer-link">contact@sukapha800.in</a>
-            </div>
-            <div className="footer-contact-block">
-              <span className="footer-contact-label">
-                <Route size={15} /> Visit
-              </span>
-              <Link to="/visit" className="footer-link">Plan a Heritage Visit</Link>
+              <a href="mailto:contact@sukapha800.org" className="footer-link">contact@sukapha800.org</a>
             </div>
           </div>
         </div>
 
         {/* Bottom-most Copyright & Compliance Bar */}
         <div className="footer-bottom-bar">
-          <span>© 2028 <span lang="as">লুইত-পাটকাই সভ্যতা সংৰক্ষণ সমিতি</span>. All Rights Reserved.</span>
+          <span>© 2028 <span lang="as">চাওলুং ছ্যুকাফাৰ অসমীয়া মহাজাতি গঠন আৰু বৰঅসম প্ৰতিষ্ঠাৰ আঠশ বছৰীয়া জয়ন্তী উদযাপন সমিতি</span>. All Rights Reserved.</span>
           <span className="footer-credit">
-            Designed &amp; Developed by <strong>Binud Software Solutions</strong>
+            Designed &amp; Developed by <strong>Binud Panging</strong>
           </span>
         </div>
       </div>

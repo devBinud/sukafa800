@@ -14,6 +14,13 @@ import HeritageVaultPage from './pages/HeritageVaultPage'
 import TributePage from './pages/TributePage'
 import VisitPlannerPage from './pages/VisitPlannerPage'
 import LegalPage from './pages/LegalPage'
+import EventsPage from './pages/EventsPage'
+import PastEventsPage from './pages/PastEventsPage'
+import CommunitiesPage from './pages/CommunitiesPage'
+import SpiritualAxisPage from './pages/SpiritualAxisPage'
+import MonumentsPage from './pages/MonumentsPage'
+import LivingHeritagePage from './pages/LivingHeritagePage'
+import ContactPage from './pages/ContactPage'
 import './App.css'
 
 // Scroll to the linked section (e.g. #insights), or to top on route change
@@ -49,7 +56,13 @@ function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/about" element={<AboutPage />} />
 
-          {/* Core narrative paths (navbar) */}
+          {/* Bor Axom: the composite mosaic */}
+          <Route path="/communities" element={<CommunitiesPage />} />
+          <Route path="/spiritual-axis" element={<SpiritualAxisPage />} />
+          <Route path="/monuments" element={<MonumentsPage />} />
+          <Route path="/living-heritage" element={<LivingHeritagePage />} />
+
+          {/* Ahom heritage */}
           <Route path="/migration" element={<MigrationPage />} />
           <Route path="/legacy" element={<LegacyPage />} />
           <Route path="/dynasty" element={<DynastyPage />} />
@@ -59,9 +72,12 @@ function App() {
           <Route path="/tribute" element={<TributePage />} />
           <Route path="/visit" element={<VisitPlannerPage />} />
           <Route path="/legal" element={<LegalPage />} />
+          <Route path="/contact" element={<ContactPage />} />
+
+          <Route path="/events" element={<EventsPage />} />
+          <Route path="/events/past" element={<PastEventsPage />} />
 
           {/* Earlier URLs redirect to their new homes */}
-          <Route path="/events" element={<Navigate to="/dynasty" replace />} />
           <Route path="/culture" element={<Navigate to="/legacy" replace />} />
           <Route path="/heritage" element={<Navigate to="/vault" replace />} />
           <Route path="/planner" element={<Navigate to="/visit" replace />} />

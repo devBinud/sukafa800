@@ -1,253 +1,169 @@
 import { useState, useEffect } from 'react'
-import { Heart, Sparkles, Send, MapPin, Calendar, BookOpen, CheckCircle2, MessageSquare } from 'lucide-react'
-import { COMMUNITY_TRIBUTES } from '../data/ahomData'
+import { Send, CheckCircle2 } from 'lucide-react'
 import Button from '../components/common/Button'
 import PageBanner from '../components/PageBanner'
+import portraitImg from '../images/hero_right_cutout.webp'
 
-const BADGE_OPTIONS = [
-  "Pride of Bor Asom",
-  "Jai Aai Asom",
-  "Sukapha Divas Tribute",
-  "UNESCO Heritage Homage",
-  "Historical Scholar"
-];
+// Tributes are kept in this browser only: there is no server to share them yet
+const STORAGE_KEY = 'bx800_tributes';
+const MAX_MESSAGE = 300;
+const EMPTY_FORM = { name: '', location: '', message: '' };
+
+const loadTributes = () => {
+  try {
+    const saved = JSON.parse(localStorage.getItem(STORAGE_KEY));
+    return Array.isArray(saved) ? saved : [];
+  } catch {
+    return [];
+  }
+};
 
 export default function TributePage() {
-  const [tributes, setTributes] = useState(() => {
-    const saved = localStorage.getItem('ahom_community_tributes');
-    if (saved) {
-      try {
-        return JSON.parse(saved);
-      } catch {
-        return COMMUNITY_TRIBUTES;
-      }
-    }
-    return COMMUNITY_TRIBUTES;
-  });
-
-  const [formData, setFormData] = useState({
-    name: '',
-    location: '',
-    badge: 'Pride of Bor Asom',
-    message: ''
-  });
-
+  const [tributes, setTributes] = useState(loadTributes);
+  const [formData, setFormData] = useState(EMPTY_FORM);
   const [submitted, setSubmitted] = useState(false);
 
   useEffect(() => {
-    localStorage.setItem('ahom_community_tributes', JSON.stringify(tributes));
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(tributes));
+    } catch {
+      // Storage can be blocked (private mode); tributes then last for this visit only
+    }
   }, [tributes]);
+
+  const updateField = (field) => (e) => setFormData({ ...formData, [field]: e.target.value });
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!formData.name.trim() || !formData.message.trim()) return;
 
-    const newTribute = {
-      id: Date.now(),
-      name: formData.name.trim(),
-      location: formData.location.trim() || 'Assam, India',
-      date: 'Today',
-      badge: formData.badge,
-      text: formData.message.trim(),
-    };
-
-    setTributes([newTribute, ...tributes]);
-    setFormData({
-      name: '',
-      location: '',
-      badge: 'Pride of Bor Asom',
-      message: ''
-    });
+    setTributes([
+      {
+        id: Date.now(),
+        name: formData.name.trim(),
+        location: formData.location.trim(),
+        date: new Date().toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' }),
+        text: formData.message.trim(),
+      },
+      ...tributes,
+    ]);
+    setFormData(EMPTY_FORM);
     setSubmitted(true);
-    setTimeout(() => setSubmitted(false), 5000);
   };
 
   return (
-    <div className="tribute-page-view">
+    <div className="bx-page">
       <PageBanner
-        title="Community Tribute Wall"
-        subtitle="Join thousands of voices in paying heartfelt respects to the visionary founder of Bor Asom. Leave your message on the royal scroll of honor."
+        title="Pay Tribute"
+        subtitle="Offer your respects to Chaolung Sukapha and to every community that built Bor Axom over eight hundred years."
         crumbs={[{ label: 'Pay Tribute' }]}
       />
 
-      <div className="royal-container" style={{ paddingTop: '4rem' }}>
-        {/* Tribute Section Grid */}
-        <div className="tribute-section-grid" style={{ marginBottom: '5rem' }}>
-          {/* Tribute Form Card */}
-          <div className="tribute-form-card">
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', marginBottom: '1.25rem' }}>
-              <Sparkles size={22} style={{ color: 'var(--gold-primary)' }} />
-              <h2 style={{ fontSize: '1.45rem', color: 'var(--text-primary)', margin: 0 }}>
-                Inscribe Your Tribute
-              </h2>
-            </div>
-            <p style={{ color: 'var(--text-secondary)', fontSize: '0.92rem', marginBottom: '1.5rem', lineHeight: '1.6' }}>
-              Write your message of respect, unity, and pride for Chaolung Sukaphaa and the heritage of Assam.
+      <section className="bx-section">
+        <div className="royal-container tribute-layout">
+          {/* Left: dedication panel */}
+          <div className="tribute-intro">
+            <span className="tribute-intro-as" lang="as" aria-hidden="true">শ্ৰদ্ধাঞ্জলি</span>
+            <h2 className="tribute-intro-title">A tribute for 800 years</h2>
+            <p className="tribute-intro-text">
+              In 1228, Sukapha chose alliance over conquest. Your words honour that choice and the
+              Axomiya Mahajati it gave rise to.
             </p>
-
-            {submitted && (
-              <div style={{
-                background: 'rgba(34, 197, 94, 0.15)',
-                border: '1px solid #22c55e',
-                color: '#166534',
-                padding: '1rem',
-                borderRadius: 'var(--radius-sm)',
-                marginBottom: '1.25rem',
-                display: 'flex',
-                alignItems: 'center',
-                gap: '0.5rem',
-                fontSize: '0.9rem',
-                fontWeight: 600
-              }}>
-                <CheckCircle2 size={18} />
-                <span>Your tribute has been inscribed on the wall of honor!</span>
-              </div>
-            )}
-
-            <form onSubmit={handleSubmit}>
-              <div className="form-group">
-                <label className="form-label">Your Name</label>
-                <input
-                  type="text"
-                  required
-                  placeholder="e.g. Bedanta Bora"
-                  className="form-input"
-                  value={formData.name}
-                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                />
-              </div>
-
-              <div className="form-group">
-                <label className="form-label">Your City / Homeland</label>
-                <input
-                  type="text"
-                  placeholder="e.g. Sivasagar, Guwahati, Dibrugarh, London..."
-                  className="form-input"
-                  value={formData.location}
-                  onChange={(e) => setFormData({ ...formData, location: e.target.value })}
-                />
-              </div>
-
-              <div className="form-group">
-                <label className="form-label">Honor Category Badge</label>
-                <select
-                  className="form-select"
-                  value={formData.badge}
-                  onChange={(e) => setFormData({ ...formData, badge: e.target.value })}
-                >
-                  {BADGE_OPTIONS.map((b, bIdx) => (
-                    <option key={bIdx} value={b} style={{ background: '#FFFFFF', color: '#1F0D12' }}>
-                      {b}
-                    </option>
-                  ))}
-                </select>
-              </div>
-
-              <div className="form-group">
-                <label className="form-label">Your Tribute Message</label>
-                <textarea
-                  rows="4"
-                  required
-                  placeholder="Share your thoughts on Chaolung Sukaphaa's legacy, unity in Assam, or the 600-year Ahom kingdom..."
-                  className="form-textarea"
-                  value={formData.message}
-                  onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                />
-              </div>
-
-              <Button type="submit" variant="filled" fullWidth icon={<Send size={16} />}>
-                Publish Tribute to Wall
-              </Button>
-            </form>
+            <ul className="tribute-intro-list">
+              <li>Remember Sukapha on Asom Divas, 2 December</li>
+              <li>Honour the communities who built Bor Axom together</li>
+              <li>Pass the story on to the next generation</li>
+            </ul>
+            <img src={portraitImg} alt="" aria-hidden="true" className="tribute-intro-portrait" loading="lazy" />
           </div>
 
-          {/* Tribute Live Feed */}
-          <div>
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '1.25rem' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                <MessageSquare size={20} style={{ color: 'var(--gold-primary)' }} />
-                <h3 style={{ fontSize: '1.3rem', color: 'var(--text-primary)', margin: 0, fontWeight: 400 }}>
-                  The Royal Scroll of Homage ({tributes.length})
-                </h3>
+          {/* Right: tribute form */}
+          <div className="tribute-form">
+            {submitted ? (
+              <div className="tribute-success" role="status">
+                <CheckCircle2 size={40} aria-hidden="true" />
+                <h2>Thank you for your tribute</h2>
+                <p>Your message has been added to your tributes below.</p>
+                <Button type="button" variant="outline" onClick={() => setSubmitted(false)}>
+                  Write another tribute
+                </Button>
               </div>
-              <span className="gold-badge" style={{ fontSize: '0.75rem' }}>
-                Live Stream
-              </span>
-            </div>
+            ) : (
+              <>
+                <h2 className="tribute-form-title">Write your tribute</h2>
+                <p className="tribute-form-lead">A few words of respect, gratitude or pride.</p>
 
-            <div className="tributes-feed">
-              {tributes.map((item) => (
-                <div key={item.id} className="tribute-feed-card">
-                  <div className="tribute-card-header">
-                    <div>
-                      <div className="tribute-author">{item.name}</div>
-                      <div className="tribute-meta">
-                        <MapPin size={12} style={{ display: 'inline', marginRight: '3px' }} />
-                        {item.location} • {item.date}
-                      </div>
+                <form onSubmit={handleSubmit}>
+                  <div className="tribute-form-row">
+                    <div className="form-group">
+                      <label className="form-label" htmlFor="tribute-name">Your name</label>
+                      <input
+                        id="tribute-name"
+                        type="text"
+                        required
+                        className="form-input"
+                        value={formData.name}
+                        onChange={updateField('name')}
+                      />
                     </div>
-                    <span className="crimson-badge" style={{ fontSize: '0.72rem', padding: '0.2rem 0.6rem' }}>
-                      {item.badge}
-                    </span>
+                    <div className="form-group">
+                      <label className="form-label" htmlFor="tribute-location">City or village</label>
+                      <input
+                        id="tribute-location"
+                        type="text"
+                        className="form-input"
+                        value={formData.location}
+                        onChange={updateField('location')}
+                      />
+                    </div>
                   </div>
-                  <p className="tribute-text">"{item.text}"</p>
-                </div>
+
+                  <div className="form-group">
+                    <label className="form-label" htmlFor="tribute-message">Your tribute</label>
+                    <textarea
+                      id="tribute-message"
+                      rows="5"
+                      required
+                      maxLength={MAX_MESSAGE}
+                      className="form-textarea"
+                      value={formData.message}
+                      onChange={updateField('message')}
+                    />
+                    <span className="tribute-count">{formData.message.length} / {MAX_MESSAGE}</span>
+                  </div>
+
+                  <Button type="submit" variant="filled" fullWidth icon={<Send size={16} />}>
+                    Offer Tribute
+                  </Button>
+                </form>
+              </>
+            )}
+          </div>
+        </div>
+      </section>
+
+      {/* Tributes written in this browser */}
+      {tributes.length > 0 && (
+        <section className="bx-section bx-section--tint">
+          <div className="royal-container">
+            <div className="bx-section-head">
+              <h2 className="bx-title">Your <span className="gold-text">Tributes</span></h2>
+              <p className="bx-lead">Saved on this device.</p>
+            </div>
+            <div className="bx-grid bx-grid--3">
+              {tributes.map((t) => (
+                <figure key={t.id} className="tribute-item">
+                  <blockquote>“{t.text}”</blockquote>
+                  <figcaption>
+                    <strong>{t.name}</strong>
+                    <span>{[t.location, t.date].filter(Boolean).join(' · ')}</span>
+                  </figcaption>
+                </figure>
               ))}
             </div>
           </div>
-        </div>
-
-        {/* Heritage Visitor Guide to Sivasagar & Charaideo */}
-        <div style={{
-          background: 'linear-gradient(135deg, #1d1828 0%, #120f18 100%)',
-          border: '1.5px solid var(--border-gold)',
-          borderRadius: 'var(--radius-xl)',
-          padding: '3rem',
-          marginBottom: '5rem'
-        }}>
-          <div style={{ textAlign: 'center', maxWidth: '750px', margin: '0 auto 2.5rem' }}>
-            <h2 style={{ fontSize: '2rem', color: '#fff', marginBottom: '0.75rem' }}>
-              Visiting the Historic Ahom Capitals
-            </h2>
-            <p style={{ color: '#EAE3D9', fontSize: '1rem', margin: 0 }}>
-              Plan an authentic pilgrimage to the sacred land of Charaideo, Sivasagar, and Gargaon.
-            </p>
-          </div>
-
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.75rem' }}>
-            <div style={{ background: 'rgba(255, 255, 255, 0.05)', border: '1px solid rgba(212, 175, 55, 0.3)', borderRadius: 'var(--radius-md)', padding: '1.5rem' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: '#F5C842', fontWeight: 700, marginBottom: '0.5rem' }}>
-                <MapPin size={18} style={{ color: '#F5C842' }} /> How to Reach
-              </div>
-              <p style={{ fontSize: '0.92rem', color: '#EAE3D9', lineHeight: '1.65', margin: 0 }}>
-                Fly into <strong style={{ color: '#FFE082' }}>Dibrugarh Airport (MOH)</strong> or <strong style={{ color: '#FFE082' }}>Jorhat Airport (JRH)</strong>. 
-                Regular cabs and trains connect directly to Sivasagar and Charaideo (approx. 1.5 to 2 hours drive).
-              </p>
-            </div>
-
-            <div style={{ background: 'rgba(255, 255, 255, 0.05)', border: '1px solid rgba(212, 175, 55, 0.3)', borderRadius: 'var(--radius-md)', padding: '1.5rem' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: '#F5C842', fontWeight: 700, marginBottom: '0.5rem' }}>
-                <Calendar size={18} style={{ color: '#F5C842' }} /> Best Time to Visit
-              </div>
-              <p style={{ fontSize: '0.92rem', color: '#EAE3D9', lineHeight: '1.65', margin: 0 }}>
-                <strong style={{ color: '#FFE082' }}>October to March</strong> offers pleasant autumn and winter weather. 
-                Attend <strong style={{ color: '#FFE082' }}>Asom Divas on Dec 2</strong> or <strong style={{ color: '#FFE082' }}>Me-Dam-Me-Phi on Jan 31</strong> 
-                for traditional Tai-Ahom rituals at Charaideo.
-              </p>
-            </div>
-
-            <div style={{ background: 'rgba(255, 255, 255, 0.05)', border: '1px solid rgba(212, 175, 55, 0.3)', borderRadius: 'var(--radius-md)', padding: '1.5rem' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: '#F5C842', fontWeight: 700, marginBottom: '0.5rem' }}>
-                <BookOpen size={18} style={{ color: '#F5C842' }} /> Key Landmarks
-              </div>
-              <p style={{ fontSize: '0.92rem', color: '#EAE3D9', lineHeight: '1.65', margin: 0 }}>
-                Charaideo Maidams (UNESCO), Rang Ghar, Talatal Ghar, Kareng Ghar (Gargaon), 
-                Shiva Dol &amp; Borpukhuri, Joysagar, and Namdang Stone Bridge.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
+        </section>
+      )}
     </div>
   )
 }

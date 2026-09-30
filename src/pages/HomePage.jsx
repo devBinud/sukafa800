@@ -11,12 +11,15 @@ import {
 import {
   AHOM_QUIZ
 } from '../data/ahomData'
+import { GUIDING_PRINCIPLE, PILLARS, COMMUNITIES } from '../data/borAxomData'
 import Button from '../components/common/Button'
 import unescoBannerImg from '../images/unesco_banner.png'
 import HeritageTourismSection from '../components/HeritageTourismSection'
 import BeforeAfterSlider from '../components/BeforeAfterSlider'
 import CentenaryCTA from '../components/CentenaryCTA'
 import ahomMapImg from '../images/ahom_map.jpg'
+import heroRightImg from '../images/hero_right_cutout.webp'
+import heroBgImg from '../images/hero__bg.jpg'
 import rangGharImg from '../images/visionary_statecraft/rang_ghar.jpg'
 import talatalGharImg from '../images/visionary_statecraft/talatal_ghar.jpeg'
 import karengGharImg from '../images/visionary_statecraft/kareng_ghar.jpeg'
@@ -28,15 +31,15 @@ import haraGauriDolImg from '../images/visionary_statecraft/Hara_Gauri_Doul.jpg'
 import baidyanathShivaDolImg from '../images/visionary_statecraft/Badyanath_Shivadol.jpg'
 
 const AHOM_HERITAGE_SITES = [
-  { name: 'Rang Ghar', place: 'Sivasagar · Royal Amphitheatre', image: rangGharImg },
-  { name: 'Talatal Ghar', place: 'Sivasagar · Royal Palace', image: talatalGharImg },
-  { name: 'Kareng Ghar', place: 'Garhgaon · Royal Palace', image: karengGharImg },
-  { name: 'Gola Ghar', place: 'Garhgaon · Royal Armoury', image: golaGharImg },
-  { name: 'Joysagar Tank', place: 'Rangpur · Largest Ahom Tank', image: joysagarTankImg },
-  { name: 'Devi Ghar', place: 'Joysagar · Ahom Temple', image: deviGharImg },
-  { name: 'Ranganath Dol', place: 'Joysagar · Ahom Temple', image: ranganathDolImg },
-  { name: 'Hara Gauri Dol', place: 'Sivasagar · Ahom Temple', image: haraGauriDolImg },
-  { name: 'Baidyanath Shiva Dol', place: 'Sivasagar · Ahom Temple', image: baidyanathShivaDolImg },
+  { name: 'Rang Ghar', place: 'Sivasagar', image: rangGharImg },
+  { name: 'Talatal Ghar', place: 'Sivasagar', image: talatalGharImg },
+  { name: 'Kareng Ghar', place: 'Garhgaon', image: karengGharImg },
+  { name: 'Gola Ghar', place: 'Garhgaon', image: golaGharImg },
+  { name: 'Joysagar Tank', place: 'Rangpur', image: joysagarTankImg },
+  { name: 'Devi Ghar', place: 'Joysagar', image: deviGharImg },
+  { name: 'Ranganath Dol', place: 'Joysagar', image: ranganathDolImg },
+  { name: 'Hara Gauri Dol', place: 'Sivasagar', image: haraGauriDolImg },
+  { name: 'Baidyanath Shiva Dol', place: 'Sivasagar', image: baidyanathShivaDolImg },
 ];
 
 const AHOM_MILESTONES = [
@@ -190,21 +193,16 @@ export default function HomePage() {
           1. FULL-WIDTH HERO BANNER
           ========================================================= */}
       <section className="bento-hero-section">
-        {/* Full-bleed background image with dark vignette */}
-        <img
-          src="/images/patkai-odyssey.jpg"
-          alt="Chaolung Sukaphaa crossing the Patkai mountains"
-          className="bento-hero-bg-img"
-        />
+        <img src={heroBgImg} alt="" aria-hidden="true" className="bento-hero-bg" />
         <div className="bento-hero-overlay" />
 
         <div className="royal-container bento-hero-inner">
           <div className="bento-hero-content">
+            <span className="bento-hero-years">1228 – 2028</span>
             <h1 className="bento-hero-title">
-              Honouring Sukaphaa.<br />
-              Uniting Bor Asom.<br />
-              Celebrating <span className="bento-hero-accent">798 Years</span><br />
-              of Ahom Heritage.
+              Honouring Chaolung Sukapha.<br />
+              Uniting Bor Axom.<br />
+              <span className="bento-hero-accent">Celebrating 800 years of Axomiya Mahajati.</span>
             </h1>
             <p className="bento-hero-lead">
               In 1228 CE, the visionary Tai prince united the diverse peoples of the Brahmaputra valley
@@ -214,14 +212,80 @@ export default function HomePage() {
               <Button to="/migration" variant="filled" arrow size="lg">
                 Explore Sukaphaa's Saga
               </Button>
-              <Button to="/tribute" variant="outline" onDark size="lg">
-                Pay Tribute
-              </Button>
             </div>
+          </div>
+
+          <figure className="bento-hero-figure">
+            <img
+              src={heroRightImg}
+              alt="Chaolung Sukapha enthroned over the map of Assam"
+              width="1203"
+              height="1124"
+              fetchPriority="high"
+            />
+          </figure>
+        </div>
+      </section>
+
+      {/* =========================================================
+          THE COMPOSITE MOSAIC OF BOR AXOM: four pillars
+          ========================================================= */}
+      <section className="bx-section">
+        <div className="royal-container">
+          <div className="bx-section-head">
+            <h2 className="bx-title">
+              The Composite Mosaic of <span className="gold-text">Bor Axom</span>
+            </h2>
+            <p className="bx-lead">{GUIDING_PRINCIPLE}</p>
+          </div>
+
+          <div className="bx-grid bx-grid--4">
+            {PILLARS.map((p) => (
+              <Link key={p.id} to={p.to} className="bx-card bx-card--text bx-pillar-card">
+                {/* Assamese name as a large faint watermark behind the title */}
+                <span className="bx-pillar-watermark" lang="as" aria-hidden="true">{p.as}</span>
+                <h3 className="bx-pillar-title">{p.english}</h3>
+                <p className="bx-card-desc">{p.desc}</p>
+                <span className="bx-card-link">{p.cta} <ArrowRight size={15} aria-hidden="true" /></span>
+              </Link>
+            ))}
           </div>
         </div>
       </section>
 
+      {/* =========================================================
+          WHO BUILT BOR AXOM? community mosaic preview
+          ========================================================= */}
+      <section className="bx-section bx-section--tint">
+        <div className="royal-container">
+          <div className="bx-section-head">
+            <h2 className="bx-title">
+              Who Built <span className="gold-text">Bor Axom?</span>
+            </h2>
+            <p className="bx-lead">
+              Tai-Ahom, Moran, Borahi, Chutiya, Bodo-Kachari, Dimasa, Koch, Mising, Karbi, Tiwa, Deori,
+              Assamese Muslims and the tea communities: every one of them helped build the Axomiya Mahajati.
+            </p>
+          </div>
+
+          {/* Each card opens that community on the Communities page */}
+          <div className="bx-community-grid">
+            {COMMUNITIES.map((c) => (
+              <Link key={c.id} to={`/communities?community=${c.id}`} className="bx-community-card">
+                <span className="bx-community-as" lang="as">{c.as}</span>
+                <h3 className="bx-community-name">{c.name}</h3>
+                <p className="bx-community-theme">{c.theme}</p>
+              </Link>
+            ))}
+          </div>
+
+          <div className="journey-footer">
+            <Button to="/communities" variant="filled" arrow>
+              Explore the Communities
+            </Button>
+          </div>
+        </div>
+      </section>
 
       {/* =========================================================
           BEFORE / AFTER 1228 COMPARISON
@@ -233,15 +297,13 @@ export default function HomePage() {
               The Valley, <span className="gold-text">Before &amp; After 1228</span>
             </h2>
             <p className="ba-desc">
-              How Sukaphaa's arrival turned scattered river villages into the Ahom kingdom.
+              How Sukaphaa's alliances with the peoples of the valley grew into a shared homeland.
             </p>
           </div>
           <BeforeAfterSlider />
           <p className="ba-disclaimer">
-            <Info size={15} aria-hidden="true" />
             <span>
-              <strong>Disclaimer:</strong> These are AI-generated artistic impressions of the valley,
-              not historical photographs.
+              Disclaimer:  AI-generated visionary photos
             </span>
           </p>
         </div>

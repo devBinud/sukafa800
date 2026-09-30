@@ -54,9 +54,6 @@ export default function DynastyPage() {
                 <span className="ruler-title">{ruler.title}</span>
                 <p className="ruler-achievements">{ruler.achievements}</p>
               </div>
-              <blockquote className="ruler-quote-box">
-                "{ruler.keyQuote}"
-              </blockquote>
             </div>
           ))}
         </div>
