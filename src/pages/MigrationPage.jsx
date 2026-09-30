@@ -3,6 +3,7 @@ import { SUKAPHA_INFO } from '../data/ahomData'
 import MigrationTimeline from '../components/MigrationTimeline'
 import Button from '../components/common/Button'
 import PageBanner from '../components/PageBanner'
+import sukaphaPortrait from '../images/hero_right_cutout.webp'
 
 export default function MigrationPage() {
   return (
@@ -19,11 +20,26 @@ export default function MigrationPage() {
 
         {/* Hero Split Card */}
         <div className="unesco-feature-card" style={{ marginBottom: '5rem' }}>
-          <div className="unesco-img-wrap">
+          <div 
+            className="unesco-img-wrap" 
+            style={{ 
+              background: 'radial-gradient(circle at center, rgba(212, 175, 55, 0.18) 0%, rgba(122, 28, 44, 0.08) 60%, #FAF8F5 100%)',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              padding: '1.5rem',
+              overflow: 'hidden'
+            }}
+          >
             <img 
-              src="/images/sukapha-hero.jpg" 
-              alt="Chaolung Sukaphaa" 
+              src={sukaphaPortrait} 
+              alt="Chaolung Sukaphaa, Founder of Bor Axom" 
               className="unesco-img"
+              style={{
+                objectFit: 'contain',
+                maxHeight: '440px',
+                filter: 'drop-shadow(0 15px 30px rgba(0, 0, 0, 0.2))'
+              }}
             />
             <div className="unesco-img-overlay" />
           </div>
