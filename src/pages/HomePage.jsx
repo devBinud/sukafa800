@@ -200,9 +200,9 @@ export default function HomePage() {
           <div className="bento-hero-content">
             <span className="bento-hero-years">1228 – 2028</span>
             <h1 className="bento-hero-title">
-              Honouring Chaolung Sukapha.<br />
+              Honouring Chaolung Sukapha<br />
               Uniting Bor Axom.<br />
-              <span className="bento-hero-accent">Celebrating 800 years of Axomiya Mahajati.</span>
+              <span className="bento-hero-accent">Celebrating 800 years of Axomiya Mahajati</span>
             </h1>
             <p className="bento-hero-lead">
               In 1228 CE, the visionary Tai prince united the diverse peoples of the Brahmaputra valley
@@ -260,7 +260,7 @@ export default function HomePage() {
         <div className="royal-container">
           <div className="bx-section-head">
             <h2 className="bx-title">
-              Who Built <span className="gold-text">Bor Axom?</span>
+              How Bor Axom <span className="gold-text">took shaped?</span>
             </h2>
             <p className="bx-lead">
               Tai-Ahom, Moran, Borahi, Chutiya, Bodo-Kachari, Dimasa, Koch, Mising, Karbi, Tiwa, Deori,

@@ -562,9 +562,9 @@
   display: flex;
   align-items: center;
   gap: 1rem;
-  padding: 0.85rem 1.5rem;
+  padding: 0.6rem 1.5rem;
   font-family: var(--font-heading);
-  font-size: 1.12rem;
+  font-size: 1rem;
   font-weight: 500;
   line-height: 1.2;
   letter-spacing: -0.02em;
@@ -584,8 +584,8 @@
 /* Group headings (Bor Axom, Ahom Heritage) between rows */
 .mobile-menu-heading {
   display: block;
-  padding: 1.5rem 1.5rem 0.35rem;
-  font-size: 0.74rem;
+  padding: 1.1rem 1.5rem 0.3rem;
+  font-size: 0.7rem;
   font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -3985,7 +3985,7 @@
 
   /* Two per row: a leftover last card spans the full row.
      The heading is the grid's first child, so an odd card count leaves the last card at an even position. */
-  .heritage-grid > .heritage-site-card:last-child:nth-child(even) {
+  .heritage-grid>.heritage-site-card:last-child:nth-child(even) {
     grid-column: 1 / -1;
   }
 }
@@ -4010,7 +4010,7 @@
     height: 120px;
   }
 
-  .heritage-grid > .heritage-site-card:last-child:nth-child(even) .heritage-site-thumb {
+  .heritage-grid>.heritage-site-card:last-child:nth-child(even) .heritage-site-thumb {
     height: 170px;
   }
 
@@ -4036,7 +4036,6 @@
   display: grid;
   grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
   background: #FFFFFF;
-  border: 1.5px solid rgba(166, 43, 43, 0.2);
   border-radius: var(--radius-xl);
   overflow: hidden;
   margin-bottom: 5rem;

@@ -60,10 +60,12 @@
       background: #FBF6EE;
       transition: opacity 0.4s ease, visibility 0.4s ease;
     }
+
     #page-loader.is-hidden {
       opacity: 0;
       visibility: hidden;
     }
+
     /* Hourglass loader: crimson frame, gold sand */
     .hourglass-loader {
       --c1: #A62B2B;
@@ -77,6 +79,7 @@
       overflow: hidden;
       animation: hourglass-flip 2s infinite linear;
     }
+
     .hourglass-loader::before,
     .hourglass-loader::after {
       content: "";
@@ -88,11 +91,6 @@
       border-top: 0;
       box-sizing: content-box;
       border-radius: 0 0 40% 40%;
-      -webkit-mask:
-        linear-gradient(#000 0 0) bottom/4px 2px no-repeat,
-        linear-gradient(#000 0 0);
-      -webkit-mask-composite: destination-out;
-              mask-composite: exclude;
       background:
         linear-gradient(var(--d, 0deg), var(--c2) 50%, #0000 0) bottom /100% 205%,
         linear-gradient(var(--c2) 0 0) center/0 100%;
@@ -100,24 +98,44 @@
       animation: inherit;
       animation-name: hourglass-sand;
     }
+
     .hourglass-loader::after {
       transform-origin: 50% calc(100% + 2px);
       transform: scaleY(-1);
       --s: 3px;
       --d: 180deg;
     }
+
     @keyframes hourglass-flip {
-      80%  { transform: rotate(0); }
-      100% { transform: rotate(0.5turn); }
+      80% {
+        transform: rotate(0);
+      }
+
+      100% {
+        transform: rotate(0.5turn);
+      }
     }
+
     @keyframes hourglass-sand {
-      10%, 70% { background-size: 100% 205%, var(--s, 0) 100%; }
-      70%, 100% { background-position: top, center; }
+
+      10%,
+      70% {
+        background-size: 100% 205%, var(--s, 0) 100%;
+      }
+
+      70%,
+      100% {
+        background-position: top, center;
+      }
     }
+
     @media (prefers-reduced-motion: reduce) {
+
       .hourglass-loader,
       .hourglass-loader::before,
-      .hourglass-loader::after { animation: none; }
+      .hourglass-loader::after {
+        animation: none;
+      }
     }
   </style>
 

@@ -75,7 +75,7 @@ export default function LivingHeritagePage() {
               href={`mailto:${CONTRIBUTE_EMAIL}?subject=Contribution%20to%20the%20Bor%20Axom%20800%20archive`}
               className="bx-contribute-link"
             >
-              <Mail size={16} aria-hidden="true" /> Send to {CONTRIBUTE_EMAIL}
+              <Mail size={16} aria-hidden="true" /> Send to Organisation
             </a>
           </div>
         </div>
