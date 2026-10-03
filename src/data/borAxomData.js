@@ -160,15 +160,6 @@ export const COMMUNITIES = [
       'Azan Pir’s Zikir and Zari songs, Persian-trained scribes and envoys (Kataki), gunpowder and military engineering, and the brass craft of the Moriya community all belong to the story of Bor Axom.',
     highlights: ['Zikir & Zari', 'Saraguri Chapori', 'Brass & military craft'],
   },
-  {
-    id: 'tea-tribes',
-    name: 'Tea Tribes & Adivasi',
-    as: 'চাহ জনগোষ্ঠী',
-    theme: 'Builders of Modern Assam',
-    contribution:
-      'Brought to Assam from the 19th century to work the tea gardens, the tea communities built one of the state’s great industries and gave Assamese culture Jhumur song and dance.',
-    highlights: ['Tea economy', 'Jhumur', 'Modern Assamese identity'],
-  },
 ];
 
 // Accordion on the Communities page: how Sukapha's first alliances were made

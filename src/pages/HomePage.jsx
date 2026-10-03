@@ -263,8 +263,8 @@ export default function HomePage() {
               How Bor Axom <span className="gold-text">took shaped?</span>
             </h2>
             <p className="bx-lead">
-              Tai-Ahom, Moran, Borahi, Chutiya, Bodo-Kachari, Dimasa, Koch, Mising, Karbi, Tiwa, Deori,
-              Assamese Muslims and the tea communities: every one of them helped build the Axomiya Mahajati.
+              Tai-Ahom, Moran, Borahi, Chutiya, Bodo-Kachari, Dimasa, Koch, Mising, Karbi, Tiwa, Deori
+              and Assamese Muslims: every one of them helped build the Axomiya Mahajati.
             </p>
           </div>
 

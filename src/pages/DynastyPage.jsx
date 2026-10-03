@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom'
 import { DYNASTY_RULERS } from '../data/ahomData'
 import lachitImg from '../images/lachit.png'
-import joymotiImg from '../images/joymoti_kuwori.jpg'
 import Button from '../components/common/Button'
 import PageBanner from '../components/PageBanner'
 
@@ -60,9 +59,6 @@ export default function DynastyPage() {
 
         {/* Joymoti Tribute Box */}
         <div className="joymoti-feature">
-          <div className="joymoti-portrait">
-            <img src={joymotiImg} alt="Queen Joymoti Kunwari at Jerenga Pathar" loading="lazy" />
-          </div>
           <div className="joymoti-body">
             <span className="crimson-badge" style={{ marginBottom: '0.85rem' }}>
               Jerenga Pathar (1679 CE)
