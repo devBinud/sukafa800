@@ -18,7 +18,6 @@ import HeritageTourismSection from '../components/HeritageTourismSection'
 import BeforeAfterSlider from '../components/BeforeAfterSlider'
 import CentenaryCTA from '../components/CentenaryCTA'
 import ahomMapImg from '../images/ahom_map.jpg'
-import heroRightImg from '../images/hero_right_cutout.webp'
 import heroBgImg from '../images/hero__bg.jpg'
 import rangGharImg from '../images/visionary_statecraft/rang_ghar.jpg'
 import talatalGharImg from '../images/visionary_statecraft/talatal_ghar.jpeg'
@@ -217,10 +216,11 @@ export default function HomePage() {
 
           <figure className="bento-hero-figure">
             <img
-              src={heroRightImg}
-              alt="Chaolung Sukapha enthroned over the map of Assam"
-              width="1203"
-              height="1124"
+              src="/logo.jpeg"
+              alt="Sukapha 800 Logo - Chaolung Sukapha Emblem"
+              className="bento-hero-logo"
+              width="600"
+              height="600"
               fetchPriority="high"
             />
           </figure>
