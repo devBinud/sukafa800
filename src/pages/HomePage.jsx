@@ -29,6 +29,9 @@ import ranganathDolImg from '../images/visionary_statecraft/Ronganath_Doul.jpg'
 import haraGauriDolImg from '../images/visionary_statecraft/Hara_Gauri_Doul.jpg'
 import baidyanathShivaDolImg from '../images/visionary_statecraft/Badyanath_Shivadol.jpg'
 
+const MARQUEE_TEXT =
+  'Chaolung Sukaphar Asomiya Mahajati Gathon & Boraxom Pratisther Athkho Basoriya (1228-2028) Jayanti Udjapon Samitee'
+
 const AHOM_HERITAGE_SITES = [
   { name: 'Rang Ghar', place: 'Sivasagar', image: rangGharImg },
   { name: 'Talatal Ghar', place: 'Sivasagar', image: talatalGharImg },
@@ -228,6 +231,24 @@ export default function HomePage() {
       </section>
 
       {/* =========================================================
+          JAYANTI MARQUEE: infinite scrolling ribbon
+          ========================================================= */}
+      <div className="jayanti-marquee" role="marquee" aria-label={MARQUEE_TEXT}>
+        <div className="jayanti-marquee__track" aria-hidden="true">
+          {[0, 1].map((group) => (
+            <div className="jayanti-marquee__group" key={group}>
+              {Array.from({ length: 3 }).map((_, i) => (
+                <span className="jayanti-marquee__item" key={i}>
+                  {MARQUEE_TEXT}
+                  <span className="jayanti-marquee__sep">✦</span>
+                </span>
+              ))}
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* =========================================================
           THE COMPOSITE MOSAIC OF BOR AXOM: four pillars
           ========================================================= */}
       <section className="bx-section">
@@ -241,13 +262,15 @@ export default function HomePage() {
 
           <div className="bx-grid bx-grid--4">
             {PILLARS.map((p) => (
-              <Link key={p.id} to={p.to} className="bx-card bx-card--text bx-pillar-card">
+              <article key={p.id} className="bx-card bx-card--text bx-pillar-card">
                 {/* Assamese name as a large faint watermark behind the title */}
                 <span className="bx-pillar-watermark" lang="as" aria-hidden="true">{p.as}</span>
                 <h3 className="bx-pillar-title">{p.english}</h3>
                 <p className="bx-card-desc">{p.desc}</p>
-                <span className="bx-card-link">{p.cta} <ArrowRight size={15} aria-hidden="true" /></span>
-              </Link>
+                <Button to={p.to} size="sm" className="bx-card-btn" aria-label={`Read more: ${p.english}`}>
+                  Read More
+                </Button>
+              </article>
             ))}
           </div>
         </div>

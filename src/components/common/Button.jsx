@@ -45,12 +45,10 @@ export default function Button({
   const content = (
     <>
       <span className="royal-btn__text">{children}</span>
-      {icon && <span className="royal-btn__icon">{icon}</span>}
-      {arrow && (
-        <span className="royal-btn__arrow">
-          <ArrowUpRight size={15} />
-        </span>
-      )}
+      {/* Every button ends in a round badge: the given icon, or the up-right arrow */}
+      <span className="royal-btn__circle" aria-hidden="true">
+        {icon || <ArrowUpRight size={15} strokeWidth={2.5} />}
+      </span>
     </>
   );
 

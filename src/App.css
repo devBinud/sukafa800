@@ -2167,27 +2167,15 @@
 }
 
 .culture-icon-wrap {
-  width: 52px;
-  height: 52px;
-  border-radius: 50%;
-  background: #FFF1F2;
+  display: inline-flex;
+  flex-shrink: 0;
   color: var(--crimson-primary);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 1.25rem;
-}
-
-.culture-date-tag {
-  font-size: 0.78rem;
-  color: var(--gold-dark);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  font-weight: 700;
-  margin-bottom: 0.35rem;
 }
 
 .culture-card-title {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
   font-size: 1.4rem;
   color: #1F0D12;
   margin-bottom: 0.35rem;
@@ -5002,7 +4990,6 @@
   flex-direction: column;
   overflow: hidden;
   background: #FFFFFF;
-  border: 1px solid var(--border-card);
   border-radius: var(--radius-md);
 }
 
@@ -5836,4 +5823,72 @@ a.bx-card:hover {
   height: 88px;
   object-fit: cover;
   clip-path: polygon(0 0, 100% 0, 100% 70.7%, 70.7% 100%, 29.3% 100%, 0 70.7%);
+}
+/* =========================================================
+   JAYANTI MARQUEE: full-width infinite ribbon below hero
+   ========================================================= */
+.jayanti-marquee {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  background: var(--crimson-gradient);
+  color: #FFFFFF;
+  padding: 0.55rem 0;
+  border-block: 1px solid rgba(212, 175, 55, 0.45);
+}
+
+.jayanti-marquee__track {
+  display: flex;
+  width: max-content;
+  animation: jayanti-marquee-scroll 60s linear infinite;
+  will-change: transform;
+}
+
+.jayanti-marquee:hover .jayanti-marquee__track {
+  animation-play-state: paused;
+}
+
+.jayanti-marquee__group {
+  display: flex;
+  flex-shrink: 0;
+}
+
+.jayanti-marquee__item {
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
+  font-family: var(--font-heading);
+  font-weight: 500;
+  font-size: clamp(0.8rem, 1.1vw, 0.9rem);
+  line-height: 1.4;
+  letter-spacing: 0.03em;
+  color: #FFFFFF;
+}
+
+.jayanti-marquee__sep {
+  margin: 0 1.25rem;
+  color: var(--gold-primary);
+  font-size: 0.75em;
+}
+
+@keyframes jayanti-marquee-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .jayanti-marquee__track {
+    animation-duration: 180s;
+  }
+}
+
+/* Marquee sits flush against the bottom of the hero */
+.bento-hero-section:has(+ .jayanti-marquee) {
+  margin-bottom: 0;
+}
+
+/* Pillar card button sits at the bottom of the card */
+.bx-card-btn {
+  align-self: flex-start;
+  margin-top: auto;
 }

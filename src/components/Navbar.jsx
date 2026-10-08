@@ -23,7 +23,7 @@ const NAV_ITEMS = [
   {
     label: 'Ahom Heritage',
     children: [
-      { to: '/migration', label: 'The Migration' },
+      { to: '/migration', label: 'The Journey' },
       { to: '/legacy', label: 'The Legacy' },
       { to: '/dynasty', label: 'Ahom Kings' },
       { to: '/vault', label: 'Heritage Vault' },

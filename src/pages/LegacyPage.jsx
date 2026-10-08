@@ -51,16 +51,17 @@ export default function LegacyPage() {
         <div className="culture-grid" style={{ marginBottom: '5rem' }}>
           {AHOM_CULTURE.map((item, idx) => (
             <div key={idx} className="culture-card">
-              <div className="culture-icon-wrap">
-                {item.icon === 'Flame' && <Flame size={24} />}
-                {item.icon === 'BookOpen' && <BookOpen size={24} />}
-                {item.icon === 'Sword' && <Sword size={24} />}
-                {item.icon === 'Shield' && <Shield size={24} />}
-                {item.icon === 'Users' && <Users size={24} />}
-                {item.icon === 'Compass' && <Compass size={24} />}
-              </div>
-              <span className="culture-date-tag">{item.date}</span>
-              <h3 className="culture-card-title">{item.title}</h3>
+              <h3 className="culture-card-title">
+                <span className="culture-icon-wrap" aria-hidden="true">
+                  {item.icon === 'Flame' && <Flame size={24} />}
+                  {item.icon === 'BookOpen' && <BookOpen size={24} />}
+                  {item.icon === 'Sword' && <Sword size={24} />}
+                  {item.icon === 'Shield' && <Shield size={24} />}
+                  {item.icon === 'Users' && <Users size={24} />}
+                  {item.icon === 'Compass' && <Compass size={24} />}
+                </span>
+                {item.title}
+              </h3>
               <span className="culture-card-subtitle">{item.subtitle}</span>
               <p className="culture-card-text">{item.text}</p>
             </div>

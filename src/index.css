@@ -422,3 +422,64 @@ cite {
 .royal-btn:hover .royal-btn__arrow {
   transform: translate(2px, -2px);
 }
+
+/* Round badge at the end of every button (icon or up-right arrow) */
+.royal-btn {
+  padding-right: 0.4rem;
+  padding-top: 0.4rem;
+  padding-bottom: 0.4rem;
+  padding-left: 1.4rem;
+}
+
+.royal-btn--sm {
+  padding: 0.32rem 0.32rem 0.32rem 1.1rem;
+}
+
+.royal-btn--lg {
+  padding: 0.45rem 0.45rem 0.45rem 1.75rem;
+}
+
+.royal-btn .royal-btn__circle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 2.1rem;
+  height: 2.1rem;
+  border-radius: 50%;
+  background: #FFFFFF;
+  color: var(--crimson-dark) !important;
+}
+
+.royal-btn--sm .royal-btn__circle {
+  width: 1.8rem;
+  height: 1.8rem;
+}
+
+.royal-btn--lg .royal-btn__circle {
+  width: 2.35rem;
+  height: 2.35rem;
+}
+
+.royal-btn .royal-btn__circle svg {
+  width: 15px;
+  height: 15px;
+  transition: transform 0.25s ease;
+}
+
+/* Only the default arrow turns on hover; custom icons stay put */
+.royal-btn:hover .royal-btn__circle .lucide-arrow-up-right {
+  transform: rotate(45deg);
+}
+
+/* Outline and white buttons get a crimson badge with a white icon */
+.royal-btn--outline .royal-btn__circle,
+.royal-btn--filled.royal-btn--on-dark .royal-btn__circle {
+  background: var(--crimson-dark);
+  color: #FFFFFF !important;
+}
+
+.royal-btn--outline.royal-btn--on-dark .royal-btn__circle {
+  background: #FFFFFF;
+  color: var(--crimson-dark) !important;
+}

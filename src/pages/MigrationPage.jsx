@@ -9,9 +9,9 @@ export default function MigrationPage() {
   return (
     <div className="migration-page-view">
       <PageBanner
-        title="The Migration"
+        title="The Journey"
         subtitle="The visionary Tai-Ahom prince whose 13-year trek across the Patkai mountains laid the bedrock of a 600-year sovereign kingdom and forged a timeless identity of harmony among Assam's indigenous peoples."
-        crumbs={[{ label: 'The Migration' }]}
+        crumbs={[{ label: 'The Journey' }]}
       />
 
       <div className="royal-container" style={{ paddingTop: '4rem' }}>

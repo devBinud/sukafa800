@@ -9,7 +9,7 @@ const BOR_AXOM_LINKS = [
 ];
 
 const DYNASTY_HERITAGE_LINKS = [
-  { to: '/migration', label: 'The Migration' },
+  { to: '/migration', label: 'The Journey' },
   { to: '/dynasty', label: 'Ahom Kings' },
   { to: '/vault', label: 'Heritage Vault' },
   { to: '/tribute', label: 'Pay Tribute' },
